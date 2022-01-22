@@ -1,0 +1,433 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bt-css -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- fontawesome -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+      integrity="sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN"
+      crossorigin="anonymous"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet" />
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet" />
+    <!-- gLight -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+    <!-- custom -->
+    <link rel="stylesheet" href="style.css" />
+    <title>TinyWonderlust</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+          <a class="navbar-brand align-self-baseline" href="#"
+            >TinyWonderlust</a
+          >
+
+          <button
+            class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onclick="change(this)"
+          >
+            <!-- <span class="sr-only">Toggle navigation</span> -->
+            <span class="icon-bar icon-bar1"></span>
+            <span class="icon-bar icon-bar2"></span>
+            <span class="icon-bar icon-bar3"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav_ul m-auto">
+              <li class="nav-item align-self-start">
+                <a class="nav-link" aria-current="page" href="nav.html">Home</a>
+              </li>
+              <li class="nav-item align-self-start">
+                <a class="nav-link" href="blog.html">Blog</a>
+              </li>
+              <li class="nav-item align-self-start">
+                <a class="nav-link" href="#">Places</a>
+              </li>
+              <li class="nav-item align-self-start">
+                <a class="nav-link" href="#philo">About</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item" role="presentation"></li>
+              <li class="nav-item align-self-start">
+                <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+              </li>
+              <li class="nav-item" role="presentation"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ======= Magenta Border Header Ends ======= -->
+
+    <!-- ======= Hero Content Starts ======= -->
+    <section id="hero" class="hero-container">
+      <div class="hero-overlay"></div>
+      <video src="header-vid.mp4" autoplay playsinline loop muted></video>
+      <!-- text content starts -->
+      <div class="hero-text-container">
+        <p class="fw-lighter blockquotes">
+          <span>
+            ”A journey of a thousand miles starts with a single step.” –
+            LaoTz</span
+          >
+        </p>
+        <a href="#philo" class="btn-hero-arrow scrollto">
+          <i class="bi bi-arrow-down-short"></i>
+        </a>
+      </div>
+      <!-- text content ends -->
+    </section>
+    <main id="main-content" class="">
+      <!-- travel philosophy -->
+      <section id="philo" class="philo-sec">
+        <div class="container p-5">
+          <div class="row align-items-center gx-5">
+            <!-- col 1 -->
+            <div class="col-lg-6 col-md-12 mb-3 phil">
+              <div class="philo-img-container">
+                <img
+                  src="images/philo.jpg"
+                  class="shadow img-fluid"
+                  alt=""
+                  height="560"
+                  width="430"
+                />
+              </div>
+            </div>
+            <!-- col 2 -->
+            <div class="col-lg-6 col-md-12">
+              <header class="banner-heading">
+                <h6 class="text-left">travel philosophy</h6>
+                <hr class="hr-blog mt-2" />
+              </header>
+              <div class="philo-title-box text-left mb-3">
+                <p class="">
+                  Traveling is an adventure into the unknown. This includes
+                  exploring new areas, and forming bonds with the locals.
+                </p>
+                <p class="">
+                  I write about my experiences traveling across the world. Come
+                  along with me as I embark on new adventures.
+                </p>
+                <a href="#" type="button" class="btn readmore"> Read More </a>
+              </div>
+
+              <!-- icons -->
+              <div class="media-box mt-2">
+                <ul class="list-inline social-menu">
+                  <li class="list-inline-item">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-tiktok"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= Latest Blog Post ======= -->
+
+      <section id="latest-blog-posts" class="latest-blog-posts">
+        <div class="container p-5">
+          <header class="banner-heading d-flex flex-column align-items-center">
+            <h6 class="">Latest blog post</h6>
+            <hr class="hr-blog mt-2" />
+          </header>
+          <div class="row g-5">
+            <div class="col-lg-4">
+              <div class="card shadow">
+                <img
+                  class="card-img img-fluid"
+                  src="gallery-image3.jpg"
+                  alt=""
+                />
+                <div class="card-body">
+                  <small class="text-muted my-2">
+                    <i class="far fa-clock fw-bold"></i> 30 minutes ago
+                    <span class="category mx-2">| Canada</span>
+                  </small>
+                  <h6 class="card-title blog-title py-2">
+                    Wonderful things to do in canada
+                  </h6>
+                  <p class="card-text blog-intro">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Illum, incidunt?
+                  </p>
+                  <a
+                    href="blog-singe.html"
+                    class="stretched-link mt-auto blog-read-btn"
+                    ><span>Read More</span><i class="bi bi-arrow-right"></i
+                  ></a>
+                </div>
+                <div
+                  class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
+                >
+                  <div class="views fw-bold">John Doe</div>
+                  <div class="stats">
+                    <i class="far fa-eye"></i> 17
+                    <i class="far fa-comment"></i> 5
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="col-lg-4">
+              <div class="card shadow">
+                <img
+                  class="card-img img-fluid"
+                  src="single-post-bg.jpg"
+                  alt=""
+                />
+
+                <div class="card-body">
+                  <small class="text-muted my-2">
+                    <i class="far fa-clock fw-bold"></i> 60 minutes ago
+                    <span class="category mx-2">| South Dakota</span>
+                  </small>
+                  <h6 class="card-title blog-title py-2">
+                    Wonderful things to do in canada
+                  </h6>
+                  <p class="card-text blog-intro">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Illum, incidunt?
+                  </p>
+                  <a
+                    href="blog-singe.html"
+                    class="stretched-link mt-auto blog-read-btn"
+                    ><span>Read More</span><i class="bi bi-arrow-right"></i
+                  ></a>
+                </div>
+                <div
+                  class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
+                >
+                  <div class="views fw-bold">John doe</div>
+                  <div class="stats">
+                    <i class="far fa-eye"></i> 147
+                    <i class="far fa-comment"></i> 12
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="container px-5">
+        <hr class="hr-sec" />
+      </div>
+
+      <!-- ======= Subscribe ======= -->
+      <section class="newsletter">
+        <div class="container px-5">
+          <header class="banner-heading">
+            <h6 class="fw-bold text-">Stay Updated</h6>
+            <hr class="hr-blog mt-2" />
+          </header>
+
+          <div class="row align-items-end gx-5">
+            <div class="col-lg-6 col-md-12">
+              <p class="">
+                Sign up for my newsletter to stay up to date on future blog
+                posts. I will not disclose your email address with anyone or
+                send you unnecessary junk. Scouts honor.
+              </p>
+              <p>
+                To learn more about me, head over to the
+                <a href="#about">about</a> page. If you have any questions or
+                simply want to say hi feel free to connect with me on any of
+                listed social links.
+              </p>
+            </div>
+            <!-- col-2 -->
+            <div class="col-lg-6 col-md-12">
+              <!-- Button to Open the Modal -->
+              <div class="me-4 d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-md readmore px-3 fs-6"
+                  data-bs-toggle="modal"
+                  data-bs-target="#myModal"
+                >
+                  Subscribe
+                </button>
+              </div>
+              <!-- The Modal -->
+              <div
+                class="modal fade focus"
+                id="myModal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down"
+                  role="document"
+                >
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <button
+                        type="button"
+                        class="btn btn-md close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <!-- Modal body -->
+
+                    <div class="modal-body p-0 row">
+                      <div class="col-lg-5 col-md-12 ad p-0">
+                        <img src="gallery-image3.jpg" class="img-fluid" />
+                      </div>
+                      <!-- col 2 -->
+                      <div class="details p-4 col-lg-7 col-md-12">
+                        <h5 class="mb-2 modal-title">Stay tuned</h5>
+
+                        <p>
+                          <small class=""
+                            >Subscribe to my newsletter and never miss<br />
+                            my latest blog posts.
+                          </small>
+                        </p>
+                        <p></p>
+                        <form action="" class="py-2">
+                          <div class="mb-3">
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="email-name"
+                              placeholder="email@example.com"
+                            />
+                          </div>
+                        </form>
+                        <button
+                          class="btn btn-dark btn-sm"
+                          type="submit"
+                          value="Subscribe"
+                        >
+                          Subscribe
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- sustainable and responsible travel for the curious modern day explorer -->
+      <!-- ======= Footer ======= -->
+      <div class="container px-5">
+        <hr class="hr-sec" />
+      </div>
+      <footer class="pt-5">
+        <div class="container d-flex flex-column px-5">
+          <div class="row justify-content-between">
+            <div class="col-lg-6">
+              <h6 class="small pb-2">TinyWonderlust</h6>
+              <p class="small text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
+            <div class="col-lg-4 align-item-end">
+              <h6 class="small pb-2">Quick links</h6>
+              <ul class="list-unstyled text-muted small">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Subscribe</a></li>
+                <li><a href="#">About</a></li>
+              </ul>
+            </div>
+            <!-- 
+            <div class="col-md-4">
+              <div class="card bg-dark text-white w-50">
+                <img
+                  src="gallery-image3.jpg"
+                  width="50%"
+                  class="card-img-top img-fluid"
+                  alt="..."
+                />
+                <div class="card-img-overlay">
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+
+          <hr />
+          <p class="text-center small text-muted mb-0">
+            &copy; Copyrights. All rights reserved.
+            <a class="text-primary" href="#">TinyWonderlust.com</a>
+          </p>
+        </div>
+      </footer>
+
+      <a
+        href="#"
+        class="back-to-top d-flex align-items-center justify-content-center"
+        ><i class="bi bi-arrow-up-short"></i
+      ></a>
+      <!-- End Footer -->
+      <!-- End Footer section  -->
+    </main>
+
+    <script></script>
+    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
