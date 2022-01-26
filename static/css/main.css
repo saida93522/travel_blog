@@ -23,10 +23,14 @@ body {
   font-family: "IM Fell French Canon", serif;
   font-style: normal;
   overflow-x: hidden;
-  background: #f8f9fa;
-  color: #212121;
+  /* background: #f8f9fa;
+  color: #212121; */
+  color: #f8f9fa;
   overflow-x: hidden;
-
+  background: #262e2b;
+  /* background-color: #3d4842; */
+  /* color: #c1ae73; */
+  /* color: #f3c962; */
   font-size: calc(0.9em + (26 - 14) * ((100vw - 18.75em) / (1600 - 300)));
 }
 .content-container {
@@ -44,9 +48,11 @@ h6 {
   font-style: normal;
   font-weight: bold;
   margin-bottom: 0;
+  color: rgb(243, 201, 98);
 }
 
 a {
+  color: #000;
   outline: none;
   text-decoration: none;
   -webkit-transition: 0.5s;
@@ -58,6 +64,7 @@ a:active,
 a:focus {
   outline: none;
   cursor: pointer;
+  color: #a5a58d;
 }
 
 img {
@@ -80,7 +87,8 @@ img {
   color: #f4f4f4;
 }
 .nav-scrolled {
-  background: #f4f4f4;
+  /* background: #f4f4f4; */
+  background: #3d4842;
   padding: 0.9rem 0 0.2rem 0;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
@@ -127,7 +135,6 @@ img {
 /***----------------------------------***
    Navigation Menu Mobile             
  ***-----------------------------------***/
-
 /* menu bar/search */
 .icon-bar {
   background-color: #a5a58d;
@@ -286,7 +293,7 @@ video {
 }
 .back-to-top:hover,
 .btn-hero-arrow:hover {
-  background: #a5a58d;
+  /* background: #a5a58d; */
 }
 .back-to-top.active {
   visibility: visible;
@@ -296,12 +303,13 @@ video {
 /***----------------------------------***
     Sections               
  ***-----------------------------------***/
-#main-content section {
+#main-content section,
+aside {
   padding: 3.5rem 0;
   overflow: hidden;
   z-index: 2;
   font-family: "IM Fell DW Pica SC", serif;
-  font-size: clamp(0.8rem, 1vw, 1rem);
+  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 .banner-heading {
@@ -309,22 +317,24 @@ video {
   margin-bottom: 1.6rem;
 }
 .hr-blog {
-  border-top: 1px solid #a5a58d;
+  border-top: 1px solid #f3c962;
   width: 8vw;
 }
 .hr-sec {
-  border-top: 0.1px solid #151515;
+  border-top: 0.1px solid #f3c962;
 }
 /***----------------------------------***
     Philo Section            
  ***-----------------------------------***/
 .philo-sec {
-  background: #ebebe7;
+  /* background: #ebebe7; */
+  background: #3d4842;
 }
 
 .philo-img-container img {
   height: auto;
   object-fit: contain;
+  border: none;
 }
 
 .readmore {
@@ -368,14 +378,18 @@ video {
 /***----------------------------------***
     Latest Blog Section            
  ***-----------------------------------***/
-
+.latest-blog-posts {
+  /* background: rgb(61, 72, 66); */
+}
 .card {
-  background-color: #ffffff;
+  background-color: #f4f5f4;
   overflow: hidden;
+  color: #000;
+  border: none;
 }
 
 .category {
-  color: #a5a58d;
+  color: #545959;
 }
 .card-img {
   border-bottom-left-radius: 0px;
@@ -384,7 +398,7 @@ video {
 
 .blog-read-btn {
   display: inline-block;
-  color: #a5a58d;
+  color: #f4f5f4;
   transition: 0.5s;
   font-weight: bold;
 }
@@ -399,6 +413,9 @@ video {
 /***----------------------------------***
     Newsletter Section            
  ***-----------------------------------***/
+.newsletter {
+  background-color: #3d4842;
+}
 
 .modal,
 .fade,
@@ -471,8 +488,16 @@ video {
  ***-----------------------------------***/
 
 footer {
-  background: #ebebe7;
+  /* background: #ebebe7; */
+  background: #262e2b;
   padding: 0 0 30px 0;
+  font-size: 1.3rem;
+}
+footer a {
+  color: #f8f9fa;
+}
+footer a:hover {
+  color: #f3ca62;
 }
 .footer .footer-newsletter {
   padding: 50px 0;
@@ -523,8 +548,8 @@ footer {
   background-size: cover;
   background-position: center bottom;
 
-  border-top: 1px solid #e1ecff;
-  border-bottom: 1px solid #e1ecff;
+  border-top: 1px solid #f3c962;
+  border-bottom: 1px solid #f3c962;
   padding: 60px 0 30px 0;
 }
 @media (max-width: 992px) {
@@ -547,8 +572,8 @@ footer {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #6a6963;
-
+  /* color: #6a6963; */
+  color: #f3c962;
   margin-top: 3px;
 }
 .footer .footer-top .footer-info p {
@@ -559,7 +584,7 @@ footer {
 .footer .footer-top .social-links a {
   font-size: 20px;
   display: inline-block;
-  color: #6a6963;
+  color: #f8f9fa;
   line-height: 0;
   margin-right: 10px;
   transition: 0.3s;
@@ -571,7 +596,7 @@ footer {
 .footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #6a6963;
+  /* color: #6a6963; */
   text-transform: uppercase;
   position: relative;
   padding-bottom: 12px;
@@ -586,7 +611,7 @@ footer {
 }
 .footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #6a6963;
+  color: #f3c962;
   font-size: 12px;
   line-height: 0;
 }
@@ -599,13 +624,13 @@ footer {
   padding-top: 0;
 }
 .footer .footer-top .footer-links ul a {
-  color: #6a6963;
+  color: #f8f9fa;
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
 }
 .footer .footer-top .footer-links ul a:hover {
-  color: #4c5c5a;
+  color: #f3c962;
 }
 .footer .footer-top .footer-contact p {
   line-height: 26px;
@@ -613,7 +638,7 @@ footer {
 .footer .copyright {
   text-align: center;
   padding-top: 30px;
-  color: #f4f4f4;
+  color: #f3c962;
 }
 .footer .credits {
   padding-top: 10px;
@@ -623,16 +648,36 @@ footer {
 }
 
 /* BLOG TEMPLATE */
-.blog-header {
-  background: url("white-cabin.jpg");
-  background-size: cover;
-  background-position: center;
+.blog-header,
+.about-header {
+  /* background: url("white-cabin.jpg"); */
+  /* background-size: cover;
+  background-position: center; */
   object-fit: cover;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
 }
+.blog .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
 
-/* END-HEADER */
+.author p {
+  font-size: 0.8rem;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.about .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
