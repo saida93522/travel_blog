@@ -5,6 +5,7 @@
     <title>Travel Blog</title>
   </head>
   <body>
-    {% block content %} {% endblock content %}
+    {% include 'navbar.html' %}
+    <main id="main-content">{% block content %} {% endblock content %}</main>
   </body>
 </html>
