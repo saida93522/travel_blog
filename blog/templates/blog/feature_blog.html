@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
+{% load static %}
 <section id="latest-blog-posts" class="latest-blog-posts">
   <div class="container p-5">
     <header class="banner-heading d-flex flex-column align-items-center">
@@ -10,7 +10,7 @@
         <div class="card shadow">
           <img
             class="card-img img-fluid"
-            src="town-buildings.jpg"
+            src="{% static 'images/town-buildings.jpg' %}"
             alt=""
             width="250"
             height="250"
@@ -46,7 +46,11 @@
       <!-- card 2 -->
       <div class="col-lg-4">
         <div class="card shadow">
-          <img class="card-img img-fluid" src="rocky-mnt.jpg" alt="" />
+          <img
+            class="card-img img-fluid"
+            src="{% static 'images/rocky-mnt.jpg' %}"
+            alt=""
+          />
 
           <div class="card-body">
             <small class="text-muted my-2">
@@ -82,4 +86,3 @@
 <div class="container px-5">
   <hr class="hr-sec" />
 </div>
-{% endblock content%}
