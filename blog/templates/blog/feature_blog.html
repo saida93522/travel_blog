@@ -1,0 +1,85 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<section id="latest-blog-posts" class="latest-blog-posts">
+  <div class="container p-5">
+    <header class="banner-heading d-flex flex-column align-items-center">
+      <h6 class="">Latest blog post</h6>
+      <hr class="hr-blog mt-2" />
+    </header>
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="card shadow">
+          <img
+            class="card-img img-fluid"
+            src="town-buildings.jpg"
+            alt=""
+            width="250"
+            height="250"
+          />
+          <div class="card-body">
+            <small class="text-muted my-2">
+              <i class="far fa-clock fw-bold"></i> 30 minutes ago
+              <span class="category mx-2">| Canada</span>
+            </small>
+            <p class="card-title fw-bold py-2">
+              Wonderful things to do in canada
+            </p>
+            <p class="card-text blog-intro">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum,
+              incidunt?
+            </p>
+            <a
+              href="blog-singe.html"
+              class="stretched-link mt-auto blog-read-btn"
+              ><span>Read More</span><i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+          <div
+            class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
+          >
+            <div class="views fw-bold">John Doe</div>
+            <div class="stats">
+              <i class="far fa-eye"></i> 17 <i class="far fa-comment"></i> 5
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="col-lg-4">
+        <div class="card shadow">
+          <img class="card-img img-fluid" src="rocky-mnt.jpg" alt="" />
+
+          <div class="card-body">
+            <small class="text-muted my-2">
+              <i class="far fa-clock fw-bold"></i> 60 minutes ago
+              <span class="category mx-2">| South Dakota</span>
+            </small>
+            <p class="card-title fw-bold py-2">
+              Wonderful things to do in canada
+            </p>
+            <p class="card-text blog-intro">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum,
+              incidunt?
+            </p>
+            <a
+              href="blog-singe.html"
+              class="stretched-link mt-auto blog-read-btn"
+              ><span>Read More</span><i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+          <div
+            class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
+          >
+            <div class="views fw-bold">John doe</div>
+            <div class="stats">
+              <i class="far fa-eye"></i> 147 <i class="far fa-comment"></i> 12
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container px-5">
+  <hr class="hr-sec" />
+</div>
+{% endblock content%}
