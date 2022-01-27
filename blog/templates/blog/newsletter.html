@@ -1,2 +1,106 @@
-{% extends 'main.html' %} {% load static %} {% block content %} {% endblock
-content%}
+{% load static %}
+<!-- ======= Subscribe ======= -->
+<section class="newsletter">
+  <div class="container px-5">
+    <header class="banner-heading">
+      <h6 class="fw-bold text-">Stay Updated</h6>
+      <hr class="hr-blog mt-2" />
+    </header>
+
+    <div class="row align-items-end gx-5">
+      <div class="col-lg-6 col-md-12">
+        <p class="">
+          Sign up for my newsletter to stay up to date on future blog posts. I
+          will not disclose your email address with anyone or send you
+          unnecessary junk. Scouts honor.
+        </p>
+        <p>
+          To learn more about me, head over to the
+          <a href="#about">about</a> page. If you have any questions or simply
+          want to say hi feel free to connect with me on any of listed social
+          links.
+        </p>
+      </div>
+      <!-- col-2 -->
+      <div class="col-lg-6 col-md-12">
+        <!-- Button to Open the Modal -->
+        <div class="me-4 d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-md readmore px-3 fs-6"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+          >
+            Subscribe
+          </button>
+        </div>
+        <!-- The Modal -->
+        <div
+          class="modal fade focus"
+          id="myModal"
+          tabindex="-1"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down"
+            role="document"
+          >
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn btn-md close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <!-- Modal body -->
+
+              <div class="modal-body p-0 row">
+                <div class="col-lg-5 col-md-12 ad p-0">
+                  <img src="gallery-image3.jpg" class="img-fluid" />
+                </div>
+                <!-- col 2 -->
+                <div class="details p-4 col-lg-7 col-md-12">
+                  <h5 class="mb-2 modal-title">Stay tuned</h5>
+
+                  <p>
+                    <small class=""
+                      >Subscribe to my newsletter and never miss<br />
+                      my latest blog posts.
+                    </small>
+                  </p>
+                  <p></p>
+                  <form action="" class="py-2">
+                    <div class="mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email-name"
+                        placeholder="email@example.com"
+                      />
+                    </div>
+                  </form>
+                  <button
+                    class="btn btn-dark btn-sm"
+                    type="submit"
+                    value="Subscribe"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- sustainable and responsible travel for the curious modern day explorer -->
+<!-- ======= Footer ======= -->
