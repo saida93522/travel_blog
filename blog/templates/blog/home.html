@@ -1,8 +1,14 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% load static %} {% block content %}
 <!-- ======= Hero Content Starts ======= -->
 <section id="hero" class="hero-container">
   <div class="hero-overlay"></div>
-  <video src="header-vid.mp4" autoplay playsinline loop muted></video>
+  <video
+    src="{% static 'images/header-vid.mp4' %}"
+    autoplay
+    playsinline
+    loop
+    muted
+  ></video>
   <!-- text content starts -->
   <div class="hero-text-container">
     <p class="fw-lighter blockquotes">
@@ -25,7 +31,7 @@
         <div class="col-lg-6 col-md-12 mb-3 phil">
           <div class="philo-img-container">
             <img
-              src="camera-woman.jpg"
+              src="{% static 'images/ph1.jpg' %}"
               class="shadow img-fluid"
               alt=""
               height="560"
