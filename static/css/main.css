@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"); */
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -9,12 +9,12 @@
   --headerScale: 1;
 }
 
-@font-face {
+/* @font-face {
   font-family: dw-pica;
   src: url("im-fell-dw-pica.roman.ttf");
   font-weight: 300;
   font-style: normal;
-}
+} */
 html {
   -webkit-font-smoothing: antialiased;
   line-height: 1.4;
