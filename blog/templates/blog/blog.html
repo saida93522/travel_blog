@@ -2,7 +2,7 @@
 <!-- ======= Hero Content Starts ======= -->
     <section id="hero" class="hero-container blog">
       <div class="hero-overlay"></div>
-      <img src="mountain-green.jpg" class="about-header"></img>
+      <img src="{% static 'images/mountain-green.jpg'%}" class="about-header"></img>
       <!-- text content starts -->
       <div class="hero-text-container">
         <p class="fw-lighter blockquotes">
@@ -18,4 +18,190 @@
       </div>
       <!-- text content ends -->
     </section>
+    <main id="main-content">
+      <section>
+        <!-- Page content-->
+        <div class="container p-5">
+          <div class="row">
+            <div class="col-lg-8 ">
+              <!-- Blog entries-->
+              <article class="featured-post mb-2"> 
+                <!-- Featured blog post-->
+                <header class="banner-heading d-flex flex-column align-items-center">
+                  <h6 class="">Featured Post</h6>
+                  <hr class="hr-blog mt-2" />
+                </header>
+                <div class="card">
+                  <a href="blog-detail.html">
+                    <img class="card-img-top img-fluid" src="window-stone-bldg.jpg"
+                    alt="..."
+                    />
+                  </a>
+                  <div class="card-body">
+                    <div class="small text-muted">January 1, 2021</div>
+                    <h2 class="card-title">Turkey</h2>
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+                    </p>
+                    <a class="btn  readmore" href="blog-detail.html">Read more →</a>
+                  </div>
+               </div>
+              </article>
+              <!-- Nested row for non-featured blog posts-->
+              <article class="latest mt-4">
+                <div class="row ">
+                  <header class="banner-heading d-flex flex-column align-items-center">
+                    <h6 class="">Related Post</h6>
+                    <hr class="hr-blog mt-2" />
+                  </header>
+                  <div class="col-lg-6 ">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                      <a href="#!">
+                        <img class="card-img-top img-fluid" src="cows-green-grass.jpg"
+                        alt="..."
+                        />
+                      </a>
+                      <div class="card-body">
+                        <div class="small text-muted">January 1, 2021</div>
+                        <h2 class="card-title h4">Post Title</h2>
+                        <p class="card-text">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                          Reiciendis aliquid atque, nulla.
+                        </p>
+                        <a class="btn readmore" href="#!">Read more →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Blog post-->
+                  <div class="col-lg-6">
+                    <div class="card mb-4">
+                      <a href="#!">
+                        <img class="card-img-top img-fluid" src="white-flowers.jpg"
+                          alt="..."/>
+                      </a>
+                      <div class="card-body">
+                      <div class="small text-muted">January 1, 2021</div>
+                      <h2 class="card-title h4">Post Title</h2>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Reiciendis aliquid atque, nulla.
+                      </p>
+                      <a class="btn readmore" href="#!">Read more →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Blog post-->
+                  <div class="col-lg-6">
+                    <div class="card mb-4">
+                      <a href="#!">
+                        <img class="card-img-top img-fluid" src="white-flowers.jpg"
+                          alt="..."/>
+                      </a>
+                      <div class="card-body">
+                      <div class="small text-muted">January 1, 2021</div>
+                      <h2 class="card-title h4">Post Title</h2>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Reiciendis aliquid atque, nulla.
+                      </p>
+                      <a class="btn readmore" href="#!">Read more →</a>
+                      </div>
+                    </div>
+                  </div>
+                   <!-- Blog post-->
+                  <div class="col-lg-6">
+                    <div class="card mb-4">
+                      <a href="#!">
+                        <img class="card-img-top img-fluid " src="woman-rocky-shore.jpg"
+                      alt="..."/>
+                      </a>
+                    <div class="card-body">
+                      <div class="small text-muted">January 1, 2021</div>
+                      <h2 class="card-title h4">Post Title</h2>
+                      <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reiciendis aliquid atque, nulla.
+                      </p>
+                      <a class="btn readmore" href="#!">Read more →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% include 'blog/pagination.html' %}
+              </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+              <aside class="widgets">
+                <!-- Side widget-->
+                <div class="card mb-4">
+                  <!-- <div class="card-header">About me</div> -->
+                  <a href="about.html">
+                    <img class="card-img-top" src="green-sneakers.jpg" alt="..."/></a>
+                  <div class="card-body">
+                    <p class="card-title">About Me</p>
+                    <p class="card-text">
+                      Hi, im stacy, a travel blogger. I write about my travel
+                      adventures and share my experiences with you in order to
+                      spark the wanderlust in all of us.
+                    </p>
+                    <a class="btn readmore" href="about.html">Read more →</a>
+                  </div>
+                </div>
+                <!-- Search widget-->
+                <div class="card mb-4">
+                  <div class="card-header fw-bold">Search</div>
+                  <div class="card-body">
+                    <div class="input-group">
+                      <div class="form-group col-md-9">
+                        <input id="exampleFormControlInput5" type="email" placeholder="Search"
+                        class="form-control form-control-underlined"
+                        />
+                      </div>
+                      <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-block readmore shadow-sm"> Search
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                  <div class="card-header fw-bold">Categories</div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                          <li><a href="#!">Turkey</a></li>
+                          <li><a href="#!">travel tips</a></li>
+                          <li><a href="#!">solo</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                          <li><a href="#!">Scotland</a></li>
+                          <li><a href="#!">Tokyo</a></li>
+                          <li><a href="#!">US</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                  <div class="card-header fw-bold">Side Widget</div>
+                  <div class="card-body">
+                    You can put anything you want inside of these side widgets.
+                    They are easy to use, and feature the Bootstrap 5 card
+                    component!
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
 {% endblock content %}
