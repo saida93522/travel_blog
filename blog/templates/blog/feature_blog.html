@@ -11,7 +11,7 @@
         <div class="card shadow">
           <img
             class="card-img img-fluid"
-            src="{{post.post_image.url}}"
+            src="{{post.thumbnail.url}}"
             alt=""
             width="250"
             height="250"
@@ -26,7 +26,7 @@
             <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
             <a
               href="blog-singe.html"
-              class="stretched-link mt-auto blog-read-btn"
+              class="btn stretched-link mt-auto blog-read-btn readmore"
               ><span>Read More</span><i class="bi bi-arrow-right"></i
             ></a>
           </div>

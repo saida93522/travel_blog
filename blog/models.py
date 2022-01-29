@@ -13,8 +13,9 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     short_intro = models.CharField(max_length=300)
     body = models.TextField()
-    post_image =models.ImageField(null=True,blank=True, upload_to='images')
+    thumbnail =models.ImageField(null=True,blank=True, upload_to='images')
     created_at = models.DateTimeField(auto_now_add=True)
+    
     # STATUS_CHOICES = (
     # ('draft', 'Draft'),
     # ('published', 'Published'),

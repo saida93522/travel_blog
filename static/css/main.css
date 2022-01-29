@@ -396,7 +396,7 @@ aside {
 
 .blog-read-btn {
   display: inline-block;
-  color: #f4f5f4;
+  color: #000;
   transition: 0.5s;
   font-weight: bold;
 }
@@ -405,7 +405,7 @@ aside {
   padding-left: 0.3rem;
 }
 .blog-read-btn:hover {
-  color: #a5a58d;
+  /* color: #a5a58d; */
 }
 
 /***----------------------------------***
