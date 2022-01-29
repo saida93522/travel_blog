@@ -12,3 +12,7 @@ def blog(request):
 def post(request):
     context = {}
     return render(request,'blog/post-detail.html',context)
+
+def about(request):
+    context = {}
+    return render(request,'blog/about.html',context)

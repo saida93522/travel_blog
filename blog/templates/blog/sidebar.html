@@ -5,7 +5,7 @@
     <!-- Side widget-->
     <div class="card mb-4">
       <!-- <div class="card-header">About me</div> -->
-      <a href="about.html">
+      <a href="{% url 'about' %}">
         <img
           class="card-img-top"
           src="{% static 'images/green-sneakers.jpg'%}"
@@ -18,7 +18,7 @@
           share my experiences with you in order to spark the wanderlust in all
           of us.
         </p>
-        <a class="btn readmore" href="about.html">Read more →</a>
+        <a class="btn readmore" href="{% url 'about' %}">Read more →</a>
       </div>
     </div>
     <!-- Search widget-->
