@@ -1,6 +1,8 @@
 {% extends 'main.html' %}{% load static %} {% block content %}
 <section id="hero" class="hero-container blog" class="page-header">
+  {% comment %}
   <div class="hero-overlay"></div>
+  {% endcomment %}
   <img
     src="{% static 'images/window-stone-bldg.jpg' %}"
     class="img-responsive"
@@ -58,7 +60,11 @@
             <div>
               <h6 class="banner-heading fw-bolder mb-4">Visit Hagia Sophia</h6>
               <figure class="mb-4">
-                <img class="img-fluid" src="turkey.jpg" alt="..." />
+                <img
+                  class="img-fluid"
+                  src="{% static 'images/turkey.jpg'%}"
+                  alt="..."
+                />
               </figure>
             </div>
 
@@ -76,12 +82,16 @@
           </article>
           <!-- Post Footer -->
           <hr class="hr-blog mt-2 w-100" />
-
+          <!-- User profile -->
           <div class="mb-4 rounded">
             <div class="d-flex justify-content-between">
               <div class="d-flex flex-row align-items-start">
                 <div class="position-relative">
-                  <img src="avatar.jpg" width="80" class="rounded-circle" />
+                  <img
+                    src="{% static 'images/avatar4.jpg'%}"
+                    width="80"
+                    class="rounded-circle"
+                  />
                   <span class="position-absolute dots"></span>
                 </div>
                 <div class="px-3 ms-2 author">
@@ -116,7 +126,8 @@
               <!-- edit icon -->
               <div class="mt-0 mx-2">
                 <!-- verify user -->
-                <a href="#"><i class="bx bx-edit-alt"></i></a>
+                <!--<a href="#"><i class="bx bx-edit-alt"></i></a>-->
+                <a href="#"><i class="far fa-edit"></i></a>
               </div>
             </div>
           </div>
@@ -144,30 +155,32 @@
                   <div class="flex-shrink-0">
                     <img
                       class="rounded-circle"
-                      src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                      src="{% static 'images/avatar3.jpg'%}"
                       alt="..."
+                      width="80"
                     />
                   </div>
                   <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    If you're going to lead a space frontier, it has to be
-                    government; it'll never be private enterprise. Because the
-                    space frontier is dangerous, and it's expensive, and it has
-                    unquantified risks.
+                    <div class="fw-bold">Jordan</div>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Quod odio esse ullam quae animi sint maxime quasi vero
+                      provident eveniet..
+                    </p>
                     <!-- Child comment 1-->
                     <div class="d-flex mt-4">
                       <div class="flex-shrink-0">
                         <img
                           class="rounded-circle"
-                          src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                          src="{% static 'images/avatar4.jpg'%}"
                           alt="..."
+                          width="80"
                         />
                       </div>
                       <div class="ms-3">
-                        <div class="fw-bold">Commenter Name</div>
-                        And under those conditions, you cannot establish a
-                        capital-market evaluation of that enterprise. You can't
-                        get investors.
+                        <div class="fw-bold">Stacy</div>
+                        Thank you Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.
                       </div>
                     </div>
                     <!-- Child comment 2-->
@@ -175,14 +188,15 @@
                       <div class="flex-shrink-0">
                         <img
                           class="rounded-circle"
-                          src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                          src="{% static 'images/avatar3.jpg'%}"
                           alt="..."
+                          width="80"
                         />
                       </div>
                       <div class="ms-3">
-                        <div class="fw-bold">Commenter Name</div>
-                        When you put money directly to a problem, it makes a
-                        good headline.
+                        <div class="fw-bold">Jordan</div>
+                        No problem. email Doloribus sint velit odit
+                        reprehenderit nihil.
                       </div>
                     </div>
                   </div>
@@ -192,15 +206,15 @@
                   <div class="flex-shrink-0">
                     <img
                       class="rounded-circle"
-                      src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                      src="{% static 'images/avatar2.jpg'%}"
                       alt="..."
+                      width="80"
                     />
                   </div>
                   <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    When I look at the universe and all the ways the universe
-                    wants to kill us, I find it hard to reconcile that with
-                    statements of beneficence.
+                    <div class="fw-bold">Aliya</div>
+                    Beautiful exercitationem nemo eaque quo! Eligendi ratione
+                    animi necessitatibus.
                   </div>
                 </div>
               </div>
