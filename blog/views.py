@@ -2,12 +2,13 @@ from django.shortcuts import render,redirect,get_object_or_404,reverse
 from django.contrib import messages
 
 
-from .models import Author,Post
+from .models import Author,Country,Post
 
 # Create your views here.
 def home(request):
-    latest = Post.objects.all().order_by('-created_at')[0:2]
-    context = {"latest":latest}
+    featured = Post.objects.prefetch_related('country')
+    lates_post = Post.objects.order_by('-created_at')[0:2]
+    context = {"latest":lates_post}
     return render(request,'blog/home.html',context)
 
 def blog(request):

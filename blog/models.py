@@ -7,6 +7,13 @@ class Author(models.Model):
     objects = models.Manager()
     def __str__(self):
         return self.author.username
+
+class Country(models.Model):
+    name = models.CharField(max_length=200)
+    objects = models.Manager()
+    def __str__(self):
+        return self.name
+    
     
 class Post(models.Model):
     owner = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -15,7 +22,7 @@ class Post(models.Model):
     body = models.TextField()
     thumbnail =models.ImageField(null=True,blank=True, upload_to='images')
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    country = models.ManyToManyField(Country)    
     # STATUS_CHOICES = (
     # ('draft', 'Draft'),
     # ('published', 'Published'),

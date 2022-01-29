@@ -19,8 +19,9 @@
           <div class="card-body">
             <small class="text-muted my-2">
               <i class="far fa-clock fw-bold"></i> {{post.created_at|timesince}}
-              ago
-              <span class="category mx-2">| Tokyo </span>
+              ago {% for place in post.country.all %}
+              <span class="category mx-2"> | {{place}} </span>
+              {% endfor %}
             </small>
             <p class="card-title fw-bold py-2">{{post.title}}</p>
             <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
