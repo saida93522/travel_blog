@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404,reverse
+from django.contrib import messages
+
+
+from .models import Author,Post
 
 # Create your views here.
 def home(request):
-    context = {}
+    latest = Post.objects.all()
+    context = {"latest":latest}
     return render(request,'blog/home.html',context)
 
 def blog(request):

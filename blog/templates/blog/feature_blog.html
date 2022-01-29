@@ -6,27 +6,24 @@
       <hr class="hr-blog mt-2" />
     </header>
     <div class="row g-5">
+      {% for post in latest %}
       <div class="col-lg-4">
         <div class="card shadow">
           <img
             class="card-img img-fluid"
-            src="{% static 'images/town-buildings.jpg' %}"
+            src="{{post.post_image.url}}"
             alt=""
             width="250"
             height="250"
           />
           <div class="card-body">
             <small class="text-muted my-2">
-              <i class="far fa-clock fw-bold"></i> 30 minutes ago
-              <span class="category mx-2">| Canada</span>
+              <i class="far fa-clock fw-bold"></i> {{post.created_at|timesince}}
+              ago
+              <span class="category mx-2">| Tokyo </span>
             </small>
-            <p class="card-title fw-bold py-2">
-              Wonderful things to do in canada
-            </p>
-            <p class="card-text blog-intro">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum,
-              incidunt?
-            </p>
+            <p class="card-title fw-bold py-2">{{post.title}}</p>
+            <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
             <a
               href="blog-singe.html"
               class="stretched-link mt-auto blog-read-btn"
@@ -36,13 +33,14 @@
           <div
             class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
           >
-            <div class="views fw-bold">John Doe</div>
+            <div class="views fw-bold">{{post.owner}}</div>
             <div class="stats">
               <i class="far fa-eye"></i> 17 <i class="far fa-comment"></i> 5
             </div>
           </div>
         </div>
       </div>
+      {% endfor %}
       <!-- card 2 -->
       <div class="col-lg-4">
         <div class="card shadow">
@@ -57,9 +55,7 @@
               <i class="far fa-clock fw-bold"></i> 60 minutes ago
               <span class="category mx-2">| South Dakota</span>
             </small>
-            <p class="card-title fw-bold py-2">
-              Wonderful things to do in canada
-            </p>
+            <p class="card-title fw-bold py-2"></p>
             <p class="card-text blog-intro">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum,
               incidunt?
