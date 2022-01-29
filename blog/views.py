@@ -6,7 +6,7 @@ from .models import Author,Post
 
 # Create your views here.
 def home(request):
-    latest = Post.objects.all()
+    latest = Post.objects.all().order_by('-created_at')[0:2]
     context = {"latest":latest}
     return render(request,'blog/home.html',context)
 
