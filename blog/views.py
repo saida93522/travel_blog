@@ -16,8 +16,9 @@ def blog(request):
     context = {'featured':featured,'articles':articles}
     return render(request,'blog/blog.html',context)
 
-def post(request):
-    context = {}
+def post(request,pk):
+    blog_post = Post.objects.get(id=pk)
+    context = {'blog_post':blog_post}
     return render(request,'blog/post-detail.html',context)
 
 def about(request):

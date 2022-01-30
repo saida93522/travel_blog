@@ -3,11 +3,7 @@
   {% comment %}
   <div class="hero-overlay"></div>
   {% endcomment %}
-  <img
-    src="{% static 'images/window-stone-bldg.jpg' %}"
-    class="img-responsive"
-    alt="..."
-  />
+  <img src="{{blog_post.thumbnail.url}}" class="img-responsive" alt="..." />
 </section>
 <main id="main-content">
   <div class="container p-5">
@@ -15,20 +11,25 @@
       <div class="col-lg-8">
         <section>
           <!-- Post content-->
+
           <!-- Post header-->
           <header
             class="banner-heading text-center d-flex flex-column align-items-center"
           >
             <!-- Post title-->
-            <h3 class="">Beautiful things to do in turkey!</h3>
+            <h3 class="">{{blog_post.title}}</h3>
             <!-- Post meta content-->
-            <p class="text-muted fst-italic">Posted on January 1, 2021</p>
+            <p class="text-muted fst-italic">{{blog_post.title}}</p>
             <!-- Post categories-->
             <small class="text-muted my-2">
-              <i class="far fa-clock fw-bold"></i> 60 minutes ago
+              <i class="far fa-clock fw-bold"></i>
+              {{blog_post.created_at|timesince}} ago
+              <!-- Post title-->
+              {% for place in blog_post.country.all%}
               <span class="category">
-                <a class="category" href="#!">| Turkey</a>
+                <a class="category" href="#!">| {{place}}</a>
               </span>
+              {% endfor %}
               <span class="category">
                 <a class="category" href="#!">| Solo</a>
               </span>
@@ -38,6 +39,7 @@
 
           <!-- Post content-->
           <article class="post-detail">
+            <p>{{blog_post.body}}</p>
             <p class="fw-bold mb-4">
               Turkey, Istanbul, straddles two continents, Asia and Europe, and
               has a fascinating history. From picture-perfect beaches and
@@ -80,6 +82,7 @@
               bone dry today. Something bad happened there as well.
             </p>
           </article>
+
           <!-- Post Footer -->
           <hr class="hr-blog mt-2 w-100" />
           <!-- User profile -->
@@ -88,7 +91,7 @@
               <div class="d-flex flex-row align-items-start">
                 <div class="position-relative">
                   <img
-                    src="{% static 'images/avatar4.jpg'%}"
+                    src="{% static 'images/avatar.jpg'%}"
                     width="80"
                     class="rounded-circle"
                   />
@@ -172,7 +175,7 @@
                       <div class="flex-shrink-0">
                         <img
                           class="rounded-circle"
-                          src="{% static 'images/avatar4.jpg'%}"
+                          src="{% static 'images/avatar.jpg'%}"
                           alt="..."
                           width="80"
                         />

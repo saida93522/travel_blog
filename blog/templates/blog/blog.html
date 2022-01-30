@@ -34,7 +34,7 @@
                 {% for post in featured %}
                 {% if post.is_featured %}
                 <div class="card">
-                  <a href="{% url 'post' %}">
+                  <a href="{% url 'post' post.id %}">
                     <img class="card-img-top img-fluid" 
                     src="{{post.thumbnail.url}}"
                     alt="..."
@@ -50,7 +50,7 @@
                   
                       <p class="card-title fw-bold py-2">{{post.title}}</p>
                       <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
-                    <a class="btn  readmore" href="{% url 'post' %}">Read more →</a>
+                    <a class="btn  readmore" href="{% url 'post' post.id %}">Read more →</a>
                   </div>
                 </div>
                {% endif %}
