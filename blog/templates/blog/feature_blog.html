@@ -26,7 +26,7 @@
             <p class="card-title fw-bold py-2">{{post.title}}</p>
             <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
             <a
-              href="blog-singe.html"
+              href="{% url 'post' post.id %}"
               class="btn stretched-link mt-auto blog-read-btn readmore"
               ><span>Read More</span><i class="bi bi-arrow-right"></i
             ></a>
