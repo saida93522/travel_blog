@@ -31,22 +31,30 @@
                   <h6 class="">Featured Post</h6>
                   <hr class="hr-blog mt-2" />
                 </header>
+                {% for post in articles %}
+                {% if post.is_featured %}
                 <div class="card">
                   <a href="{% url 'post' %}">
                     <img class="card-img-top img-fluid" 
-                    src="{% static 'images/window-stone-bldg.jpg' %}"
+                    src="{{post.thumbnail.url}}"
                     alt="..."
                     />
                   </a>
                   <div class="card-body">
-                    <div class="small text-muted">January 1, 2021</div>
-                    <h2 class="card-title">Turkey</h2>
-                    <p class="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
-                    </p>
+                    <small class="text-muted my-2">
+                      <i class="far fa-clock fw-bold"></i> {{post.created_at|timesince}}ago 
+                      {% for place in post.country.all %}
+                          <span class="category mx-2"> | {{place}} </span>
+                      {% endfor %}
+                    </small>
+                  
+                      <p class="card-title fw-bold py-2">{{post.title}}</p>
+                      <p class="card-text blog-intro">{{post.short_intro|slice:75}}</p>
                     <a class="btn  readmore" href="{% url 'post' %}">Read more →</a>
                   </div>
-               </div>
+                </div>
+               {% endif %}
+               {% endfor %}
               </article>
               <!-- Nested row for non-featured blog posts-->
               <article class="latest mt-4">
@@ -56,86 +64,37 @@
                     <hr class="hr-blog mt-2" />
                   </header>
                   <!-- Blog post-->
+                  {% for post in articles %}
                   <div class="col-lg-6 ">
                     <div class="card mb-4">
                       <a href="#!">
                         <img class="card-img-top img-fluid" 
-                        src="{% static 'images/cows-green-grass.jpg' %}"
+                        src="{{post.thumbnail.url}}"
                         alt="..."
                         />
                       </a>
                       <div class="card-body">
-                        <div class="small text-muted">January 1, 2021</div>
-                        <h2 class="card-title h4">Post Title</h2>
-                        <p class="card-text">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          Reiciendis aliquid atque, nulla.
+                        <small class="text-muted my-2">
+                          <i class="far fa-clock fw-bold"></i> {{post.created_at|timesince}}ago 
+                          {% for place in post.country.all %}
+                            <span class="category mx-2"> | {{place}} </span>
+                          {% endfor %}
+                        </small>
+                        <p class="card-title fw-bold py-2">{{post.title}}</p>
+                        <p class="card-text blog-intro">
+                          {{post.short_intro|slice:75}}
+                         
                         </p>
                         <a class="btn readmore" href="#!">Read more →</a>
                       </div>
                     </div>
                   </div>
-                  <!-- Blog post-->
-                  <div class="col-lg-6">
-                    <div class="card mb-4">
-                      <a href="#!">
-                        <img class="card-img-top img-fluid" 
-                        src="{% static 'images/white-flowers.jpg' %}"
-                          alt="..."/>
-                      </a>
-                      <div class="card-body">
-                      <div class="small text-muted">January 1, 2021</div>
-                      <h2 class="card-title h4">Post Title</h2>
-                      <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Reiciendis aliquid atque, nulla.
-                      </p>
-                      <a class="btn readmore" href="#!">Read more →</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Blog post-->
-                  <div class="col-lg-6">
-                    <div class="card mb-4">
-                      <a href="#!">
-                        <img class="card-img-top img-fluid" 
-                        src="{% static 'images/lady-top-mnt.jpg' %}"
-                          alt="..."/>
-                      </a>
-                      <div class="card-body">
-                      <div class="small text-muted">January 1, 2021</div>
-                      <h2 class="card-title h4">Post Title</h2>
-                      <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Reiciendis aliquid atque, nulla.
-                      </p>
-                      <a class="btn readmore" href="#!">Read more →</a>
-                      </div>
-                    </div>
-                  </div>
-                   <!-- Blog post-->
-                  <div class="col-lg-6">
-                    <div class="card mb-4">
-                      <a href="#!">
-                        <img class="card-img-top img-fluid " 
-                        src="{% static 'images/Hnet.com-image.jpg' %}"
-                        alt="..."/>
-                      </a>
-                      <div class="card-body">
-                        <div class="small text-muted">January 1, 2021</div>
-                        <h2 class="card-title h4">Post Title</h2>
-                        <p class="card-text">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          Reiciendis aliquid atque, nulla.
-                        </p>
-                        <a class="btn readmore" href="#!">Read more →</a>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
+                  {% include 'blog/pagination.html' %}
                 </div>
-                {% include 'blog/pagination.html' %}
               </article>
             </div>
+            
             <!-- Side widgets-->
             {% include 'blog/sidebar.html' %}
 

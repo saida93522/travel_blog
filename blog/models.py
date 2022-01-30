@@ -23,6 +23,8 @@ class Post(models.Model):
     thumbnail =models.ImageField(null=True,blank=True, upload_to='images')
     created_at = models.DateTimeField(auto_now_add=True)
     country = models.ManyToManyField(Country)    
+    is_featured = models.BooleanField(default=False)
+    objects = models.Manager()
     # STATUS_CHOICES = (
     # ('draft', 'Draft'),
     # ('published', 'Published'),

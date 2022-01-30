@@ -6,13 +6,14 @@ from .models import Author,Country,Post
 
 # Create your views here.
 def home(request):
-    featured = Post.objects.prefetch_related('country')
-    lates_post = Post.objects.order_by('-created_at')[0:2]
+    lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
     context = {"latest":lates_post}
     return render(request,'blog/home.html',context)
 
 def blog(request):
-    context = {}
+    articles = Post.objects.prefetch_related('country').order_by('-created_at')
+    # related_post = Post.objects.order_by('-created_at')
+    context = {'articles':articles}
     return render(request,'blog/blog.html',context)
 
 def post(request):
