@@ -11,9 +11,9 @@ def home(request):
     return render(request,'blog/home.html',context)
 
 def blog(request):
-    articles = Post.objects.prefetch_related('country').order_by('-created_at')
-    # related_post = Post.objects.order_by('-created_at')
-    context = {'articles':articles}
+    articles = Post.objects.prefetch_related('country')
+    featured = Post.objects.filter(is_featured=True)
+    context = {'featured':featured,'articles':articles}
     return render(request,'blog/blog.html',context)
 
 def post(request):

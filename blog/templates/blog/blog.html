@@ -31,7 +31,7 @@
                   <h6 class="">Featured Post</h6>
                   <hr class="hr-blog mt-2" />
                 </header>
-                {% for post in articles %}
+                {% for post in featured %}
                 {% if post.is_featured %}
                 <div class="card">
                   <a href="{% url 'post' %}">
