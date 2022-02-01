@@ -18,7 +18,7 @@
           share my experiences with you in order to spark the wanderlust in all
           of us.
         </p>
-        <a class="btn readmore" href="{% url 'about' %}">Read more →</a>
+        <a class="btn readmore" href="about.html">Read more →</a>
       </div>
     </div>
     <!-- Search widget-->
@@ -49,16 +49,12 @@
         <div class="row">
           <div class="col-sm-6">
             <ul class="list-unstyled mb-0">
-              <li><a href="#!">Turkey</a></li>
-              <li><a href="#!">travel tips</a></li>
-              <li><a href="#!">solo</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-6">
-            <ul class="list-unstyled mb-0">
-              <li><a href="#!">Scotland</a></li>
-              <li><a href="#!">Tokyo</a></li>
-              <li><a href="#!">US</a></li>
+              {% for post in articles %} {% for place in post.country.all %}
+
+              <li>
+                <a class="text-muted" href="#!">#{{place}}</a>
+              </li>
+              {% endfor %} {% endfor %}
             </ul>
           </div>
         </div>
