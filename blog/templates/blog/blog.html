@@ -85,7 +85,12 @@
                           {{post.short_intro|slice:75}}
                          
                         </p>
-                        <a class="btn readmore" href="#!">Read more →</a>
+                        <a class="btn readmore" href="{% url 'post' post.id %}">Read more →</a>
+                      </div>
+                      <!--cardfooter-->
+                      <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                        <div class="views fw-bold">{{post.owner}}</div>
+                        <div class="stats"><i class="far fa-comment"></i> 5</div>
                       </div>
                     </div>
                   </div>
