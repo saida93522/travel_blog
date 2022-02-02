@@ -49,12 +49,12 @@
         <div class="row">
           <div class="col-sm-6">
             <ul class="list-unstyled mb-0">
-              {% for post in articles %} {% for place in post.country.all %}
+              {% for place in country_count %}
 
               <li>
-                <a class="text-muted" href="#!">#{{place}}</a>
+                <a class="text-muted" href="#!">#{{place.country__name}}</a>
               </li>
-              {% endfor %} {% endfor %}
+              {% endfor %}
             </ul>
           </div>
         </div>
@@ -63,10 +63,7 @@
     <!-- Side widget-->
     <div class="card mb-4">
       <div class="card-header fw-bold">Side Widget</div>
-      <div class="card-body">
-        You can put anything you want inside of these side widgets. They are
-        easy to use, and feature the Bootstrap 5 card component!
-      </div>
+      <div class="card-body">!</div>
     </div>
   </aside>
 </div>

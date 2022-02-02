@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from .utils import get_country
 from .models import Author, Country, Post
 
 # Create your views here.
@@ -35,7 +35,8 @@ def blog(request):
 
 def post(request,pk):
     blog_post = Post.objects.get(id=pk)
-    context = {'blog_post':blog_post}
+    country_count = get_country()
+    context = {'articles':blog_post, 'country_count':country_count}
     return render(request,'blog/post-detail.html',context)
 
 def about(request):

@@ -3,7 +3,7 @@
   {% comment %}
   <div class="hero-overlay"></div>
   {% endcomment %}
-  <img src="{{blog_post.thumbnail.url}}" class="img-responsive" alt="..." />
+  <img src="{{articles.thumbnail.url}}" class="img-responsive" alt="..." />
 </section>
 <main id="main-content">
   <div class="container p-5">
@@ -17,15 +17,15 @@
             class="banner-heading text-center d-flex flex-column align-items-center"
           >
             <!-- Post title-->
-            <h3 class="">{{blog_post.title}}</h3>
+            <h3 class="">{{articles.title}}</h3>
             <!-- Post meta content-->
-            <p class="text-muted fst-italic">{{blog_post.title}}</p>
+            <p class="text-muted fst-italic">{{articles.title}}</p>
             <!-- Post categories-->
             <small class="text-muted my-2">
               <i class="far fa-clock fw-bold"></i>
-              {{blog_post.created_at|timesince}} ago
+              {{articles.created_at|timesince}} ago
               <!-- Post title-->
-              {% for place in blog_post.country.all%}
+              {% for place in articles.country.all%}
               <span class="category">
                 <a class="category" href="#!">| {{place}}</a>
               </span>
@@ -36,7 +36,7 @@
 
           <!-- Post content-->
           <article class="post-detail">
-            <p>{{blog_post.body}}</p>
+            <p>{{articles.body}}</p>
             <p class="fw-bold mb-4">
               Turkey, Istanbul, straddles two continents, Asia and Europe, and
               has a fascinating history. From picture-perfect beaches and
@@ -224,7 +224,8 @@
       </div>
       <!-- Side widgets-->
 
-      {% include 'blog/sidebar.html' %}
+      {% include 'blog/sidebar.html' with articles=articles %}
+      <!--end-row-->
     </div>
     <!--end-row-->
   </div>
