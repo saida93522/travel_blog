@@ -678,13 +678,10 @@ footer a:hover {
 }
 
 /* Pagination */
-.pagination > li > a,
-.pagination > li > span {
-  border-radius: 50% !important;
-  margin: 0 5px;
-}
 
 .pagination .page-item .page-link {
+  border-radius: 50% !important;
+  margin: 0 5px;
   color: #f3c962;
   background-color: #000;
   border: none;
