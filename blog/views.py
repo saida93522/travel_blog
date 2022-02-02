@@ -12,11 +12,25 @@ def home(request):
 
 def blog(request):
     articles = Post.objects.prefetch_related('country')
-    # articles = Post.objects.all()
     featured = Post.objects.filter(is_featured=True)
 
+    paginator = Paginator(articles,2)
+
+    # parameter used to determine what instances or page in the queryset needs to be rendered
+    query_page = 'page'
+    page_req = request.GET.get(query_page)
+
+    try:
+        paginated_page = paginator.page(page_req)
+    except PageNotAnInteger:
+        paginated_page = paginator.page(1)
+    except EmptyPage:
+        #display last page result if page is out of range
+        paginated_page = paginator.page(paginator.num_pages)
     
-    context = {'featured':featured,'articles':paginated_page,'page_req':page_req}
+
+    
+    context = {'featured':featured, 'articles':paginated_page, 'query_page':query_page}
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
