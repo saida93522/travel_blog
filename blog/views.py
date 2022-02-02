@@ -1,14 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .utils import get_country
+
 from .models import Author, Country, Post
 
 # Create your views here.
 def home(request):
     lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
+ 
     context = {"latest":lates_post}
     return render(request,'blog/home.html',context)
+
 
 def blog(request):
     articles = Post.objects.prefetch_related('country')
