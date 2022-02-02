@@ -95,7 +95,9 @@
                     </div>
                   </div>
                   {% endfor %}
-                  {% include 'blog/pagination.html' with articles=articles  %}
+                  <div class="col-lg-12 mt-5">
+                    {% include 'blog/pagination.html' with articles=articles  %}
+                  </div>
                 </div>
               </article>
             </div>

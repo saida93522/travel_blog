@@ -13,8 +13,8 @@ def home(request):
 def blog(request):
     articles = Post.objects.prefetch_related('country')
     featured = Post.objects.filter(is_featured=True)
-
-    paginator = Paginator(articles,2)
+    #render queryset in pages 4
+    paginator = Paginator(articles,1)
 
     # parameter used to determine what instances or page in the queryset needs to be rendered
     query_page = 'page'

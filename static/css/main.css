@@ -676,3 +676,20 @@ footer a:hover {
 .about .hero-overlay {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/* Pagination */
+.pagination > li > a,
+.pagination > li > span {
+  border-radius: 50% !important;
+  margin: 0 5px;
+}
+
+.pagination .page-item .page-link {
+  color: #f3c962;
+  background-color: #000;
+  border: none;
+}
+.page-item.active .page-link {
+  background-color: #f3c962;
+  color: #000;
+}
