@@ -1,5 +1,6 @@
 {% extends 'main.html' %}{% load static %} {% block content %}
 <!-- ======= Hero Content Starts ======= -->
+{% load crispy_forms_tags %}
 <section id="hero" class="hero-container">
   <div class="hero-overlay"></div>
   <video
@@ -84,6 +85,7 @@
       </div>
     </div>
   </section>
+
   <!-- ======= Feature Blog Post ======= -->
   {% include 'blog/feature_blog.html' %} {% include 'blog/subscribe.html' %}
 </main>

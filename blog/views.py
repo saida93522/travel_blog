@@ -5,6 +5,8 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from newsletter.models import Subscribers
+from .forms import SubscribersForm
 from .utils import get_country
 
 from .models import Author, Country, Post
@@ -12,8 +14,16 @@ from .models import Author, Country, Post
 # Create your views here.
 def home(request):
     lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
- 
-    context = {"latest":lates_post}
+    form = SubscribersForm(request.POST)
+    if request.method == 'POST':
+        form = SubscribersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You have successfully signedup for our newsletter.')
+            return redirect('/')
+    else:
+        form = SubscribersForm()
+    context = {"latest":lates_post, 'form':form}
     return render(request,'blog/home.html',context)
 
 
