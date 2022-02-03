@@ -11,4 +11,3 @@ class TestHomePage(TestCase):
         # object client
         response = self.client.get(url)
         self.assertContains(response, '”A journey of a thousand miles starts with a single step.” – LaoTz')
-    
