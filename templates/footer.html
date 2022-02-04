@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Footer-->
-<footer class="pt-5">
+<footer class="pt-5 fixed-bottom">
   <div class="container d-flex flex-column px-5">
     <div class="row justify-content-between">
       <div class="col-lg-6">
@@ -16,8 +16,9 @@
         <ul class="list-unstyled text-muted small">
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'blog' %}">Blog</a></li>
-          <li><a href="#">Subscribe</a></li>
+          <li><a href="news.html">Subscribe</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'news_letter' %}">Newsletter</a></li>
         </ul>
       </div>
     </div>

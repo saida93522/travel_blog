@@ -409,7 +409,7 @@ aside {
 }
 
 /***----------------------------------***
-    Newsletter Section            
+    Subscription Section            
  ***-----------------------------------***/
 .subscribe {
   background-color: #3d4842;
@@ -480,6 +480,13 @@ aside {
   border-bottom: 1px solid #000;
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+}
+/***----------------------------------***
+    Newsletter Section            
+ ***-----------------------------------***/
+
+.newsletter {
+  margin: 0 auto;
 }
 
 /***----------------------------------***

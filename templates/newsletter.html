@@ -1,0 +1,83 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<!---->
+{% load crispy_forms_tags %}
+<main class="main-content mt-5">
+  <section class="newsletter">
+    <div class="container">
+      {% comment %} form {% endcomment %}
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-8 col-sm-12">
+          <div class="table-responsive">
+            <table
+              class="table table-borderless align-middle"
+              role="presentation"
+            >
+              <!--start of tr1 head-->
+              <tr>
+                <td class="align-top bg-white">
+                  <table class="table-borderless">
+                    <tr class="d-flex">
+                      <td class="logo text-center justify-content-center">
+                        <a
+                          class="text-center navbar-brand m-0"
+                          href="{% url 'home' %}"
+                        >
+                          <img
+                            src="{% static 'images/logoipsum-logo-5.svg' %}"
+                            alt="logo"
+                          />
+                        </a>
+                        <ul class="nav justify-content-center">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Place</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!--end of tr1 head-->
+              <!--start of tr2 body-->
+              <tr>
+                <td class="bg-white align-middle bg-white py-1 px-2">
+                  <div class="newsletter-overlay"></div>
+                  <table>
+                    <tr>
+                      <td></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!--end of tr2 body-->
+            </table>
+          </div>
+
+          {% for message in messages %}
+          <div class="alert alert-success">{{ message }}</div>
+          {% endfor %}
+          <div class="card">
+            <div class="card-body">
+              <form method="POST" action="">
+                {% csrf_token %} {{ form|crispy }}
+                <input
+                  class="btn btn-info btn-block"
+                  type="submit"
+                  value="Send Message"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %} Email marketing newsletter

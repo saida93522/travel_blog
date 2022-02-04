@@ -11,7 +11,6 @@ from .utils import get_country
 
 from .models import Author, Country, Post
 
-# Create your views here.
 def home(request):
     lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
     form = SubscribersForm(request.POST)
