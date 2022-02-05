@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 from django.conf import settings
-from django.template.loader import render_to_string
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
@@ -58,11 +58,14 @@ def post(request,pk):
     return render(request,'blog/post-detail.html',context)
 
 def news_letter(request):
+    lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:1]
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
-        form.save()
-        message.success(request, 'Your email has been sent to subscribers successfully.')
-        return redirect('/')
+        if form.is_valid():
+            print(form)
+            form.save()
+            message.success(request, 'Your email has been sent to subscribers successfully.')
+            return redirect('/')
     else:
         form = NewsLetterForm()
     context = {'form':form}

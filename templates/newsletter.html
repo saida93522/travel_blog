@@ -8,6 +8,16 @@
         {% for message in messages %}
         <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
+        <div class="card">
+          <div class="card-body">
+            <form method="POST">{% csrf_token %} {{form|crispy}}</form>
+            <input
+              class="btn btn-info btn-block"
+              type="submit"
+              value="Send Message"
+            />
+          </div>
+        </div>
       </div>
       <table class="table mb-0 pb-0 table-borderless table-light">
         <!-- header -->
