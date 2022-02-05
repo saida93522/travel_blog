@@ -11,7 +11,12 @@ urlpatterns = [
     path('',views.home, name='home'),
     path('blog/',views.blog, name='blog'),
     path('post/<str:pk>/',views.post, name='post'),
+
+    # Profile
     path('about/',views.about, name='about'),
+
+    # newsletter
+    path('newsletter/', views.news_letter, name='news_letter'),
     
 ]
 

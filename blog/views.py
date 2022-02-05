@@ -5,8 +5,8 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from newsletter.models import Subscribers
-from .forms import SubscribersForm
+from newsletter.models import Subscribers, NewsLetter
+from .forms import SubscribersForm, NewsLetterForm
 from .utils import get_country
 
 from .models import Author, Country, Post
@@ -54,6 +54,22 @@ def post(request,pk):
     country_count = get_country()
     context = {'articles':blog_post, 'country_count':country_count}
     return render(request,'blog/post-detail.html',context)
+
+def news_letter(request):
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        form.save()
+        message.success(request, 'Your email has been sent to subscribers successfully.')
+        return redirect('/')
+    else:
+        form = NewsLetterForm()
+    context = {'form':form}
+    return render(request, 'newsletter.html',context)
+
+
+
+
+
 
 def about(request):
     context = {}

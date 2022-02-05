@@ -5,14 +5,14 @@ from .models import Subscribers, NewsLetter
 
 
 
-def news_letter(request):
-    if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
-        form.save()
-        message.success(request, 'Your email has been sent to subscribers successfully.')
-        return redirect('/')
-    else:
-        form = NewsLetterForm()
-    context = {'form':form}
-    return render(request, 'newsletter.html',context)
+# def news_letter(request):
+#     if request.method == 'POST':
+#         form = NewsLetterForm(request.POST)
+#         form.save()
+#         message.success(request, 'Your email has been sent to subscribers successfully.')
+#         return redirect('/')
+#     else:
+#         form = NewsLetterForm()
+#     context = {'form':form}
+#     return render(request, 'newsletter.html',context)
     

@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+from blog.models import Post
 
 class Subscribers(models.Model):
     email = models.EmailField(null=True)
@@ -13,7 +14,8 @@ class Subscribers(models.Model):
 
 class NewsLetter(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
-    message = models.TextField(null=True)
+    message = models.ForeignKey(Post, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.title
