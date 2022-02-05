@@ -28,6 +28,7 @@ def home(request):
 
 def blog(request):
     articles = Post.objects.prefetch_related('country')
+    country_count = get_country()
     featured = Post.objects.filter(is_featured=True)
     #render queryset in pages 4
     paginator = Paginator(articles,4)
@@ -44,9 +45,10 @@ def blog(request):
         #display last page result if page is out of range
         paginated_page = paginator.page(paginator.num_pages)
     
-
-    
-    context = {'featured':featured, 'articles':paginated_page, 'query_page':query_page}
+    context = {'featured':featured,
+               'articles':paginated_page,
+               'query_page':query_page,
+               'country_count':country_count}
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
