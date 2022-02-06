@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
+from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -58,16 +59,27 @@ def post(request,pk):
     return render(request,'blog/post-detail.html',context)
 
 def news_letter(request):
-    lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:1]
+    emails = Subscribers.objects.all()
+    mail_list = [mail for mail in emails]
+    print(mail_list)
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
         if form.is_valid():
-            print(form)
             form.save()
-            message.success(request, 'Your email has been sent to subscribers successfully.')
-            return redirect('/')
+            title = form.cleaned_data.get('title')
+            send_mail(
+                title,
+                'message',
+                'tinywanderlust@example.com', 
+                mail_list,
+                fail_silently=False,
+                )
+            
+            messages.success(request, 'Your email has been sent to subscribers successfully.')
+            return redirect('news_letter')
     else:
         form = NewsLetterForm()
+        print(latest_post)
     context = {'form':form}
     return render(request, 'newsletter.html',context)
 

@@ -10,12 +10,16 @@
         {% endfor %}
         <div class="card">
           <div class="card-body">
-            <form method="POST">{% csrf_token %} {{form|crispy}}</form>
-            <input
-              class="btn btn-info btn-block"
-              type="submit"
-              value="Send Message"
-            />
+            <form method="POST">
+              {% csrf_token %} {% for field in form %}
+              <label for="">{{field.label}}</label>
+              {{field}} {% endfor %}
+              <input
+                class="btn btn-info btn-block"
+                type="submit"
+                value="Send Message"
+              />
+            </form>
           </div>
         </div>
       </div>

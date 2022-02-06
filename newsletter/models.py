@@ -14,7 +14,7 @@ class Subscribers(models.Model):
 
 class NewsLetter(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
-    message = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # message = models.ForeignKey(Post, on_delete=models.CASCADE)
     
 
     def __str__(self):
