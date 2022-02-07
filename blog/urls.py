@@ -17,6 +17,7 @@ urlpatterns = [
 
     # newsletter
     path('newsletter/', views.news_letter, name='news_letter'),
+    path('search/', views.search, name='search'),
     
 ]
 

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
 from django.conf import settings
-
+from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
@@ -13,20 +13,21 @@ from .utils import get_country
 from .models import Author, Country, Post
 
 def home(request):
-    lates_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
+    latest_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
     form = SubscribersForm(request.POST)
     if request.method == 'POST':
         form = SubscribersForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You have successfully signedup for our newsletter.')
+            messages.success(request, 'You have successfully signed up for our newsletter.')
             return redirect('/')
     else:
         form = SubscribersForm()
-    context = {"latest":lates_post, 'form':form}
+    context = {"latest":latest_post, 'form':form}
     return render(request,'blog/home.html',context)
-
-
+def search(request):
+    context = {}
+    return render(request,'search.html',context)
 def blog(request):
     articles = Post.objects.prefetch_related('country')
     country_count = get_country()
