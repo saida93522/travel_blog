@@ -25,9 +25,21 @@ def home(request):
         form = SubscribersForm()
     context = {"latest":latest_post, 'form':form}
     return render(request,'blog/home.html',context)
+
 def search(request):
-    context = {}
-    return render(request,'search.html',context)
+    articles = Post.objects.prefetch_related('country')
+    query = request.GET.get('q')
+    if query:
+        articles = articles.filter(
+            Q(title__icontains=query)|
+            Q(short_intro__icontains=query)
+            ).distinct()
+    context = {'articles':articles}
+    return render(request,'blog/search.html',context)
+
+
+
+
 def blog(request):
     articles = Post.objects.prefetch_related('country')
     country_count = get_country()

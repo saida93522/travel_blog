@@ -697,3 +697,7 @@ footer a:hover {
   background-color: #f3c962;
   color: #000;
 }
+.search_list li {
+  background-color: #f8f9fa;
+  opacity: 0.9;
+}
