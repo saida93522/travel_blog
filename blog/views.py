@@ -32,9 +32,10 @@ def search(request):
     if query:
         articles = articles.filter(
             Q(title__icontains=query)|
-            Q(short_intro__icontains=query)
+            Q(short_intro__icontains=query)|
+            Q(country__name__icontains=query)
             ).distinct()
-    context = {'articles':articles}
+    context = {'articles':articles,'q':query}
     return render(request,'blog/search.html',context)
 
 
