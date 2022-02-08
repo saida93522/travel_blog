@@ -32,4 +32,19 @@ class Post(models.Model):
     #status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='draft')
     def __str__(self):
         return self.owner.author.username
-    
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    content = models.TextField()
+    avatar = models.ImageField(default='default.svg', upload_to='images')
+    created_on = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+    def __str__(self):
+        return (f'Comment by {self.name}')
+        
