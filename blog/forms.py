@@ -6,8 +6,8 @@ from .models import Post,Comment
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model: Comment
-        fields = ['name','email','body','avatar']
+        model = Comment
+        fields = ['name','email','content','avatar']
     
 class SubscribersForm(forms.ModelForm):
     class Meta:

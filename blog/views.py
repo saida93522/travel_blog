@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
-from .forms import SubscribersForm, NewsLetterForm
+from .forms import SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country
 
 from .models import Author, Country, Post
@@ -68,10 +68,29 @@ def blog(request):
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
-    blog_post = Post.get_object_or_404(id=pk)
     country_count = get_country()
-    context = {'articles':blog_post, 'country_count':country_count}
+    blog_post = get_object_or_404(Post, id=pk)
+    comments = blog_post.comments.filter(is_active=True)
+    new_comment = None
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            # create comment
+            new_comment = form.save(commit=False)
+            # Assign post to comment
+            new_comment.post = blog_post
+            new_comment.save()
+    else:
+        form = CommentForm()
+    context = {'articles':blog_post, 
+               'country_count':country_count, 
+               'form':form, 
+               'new_comment':new_comment,
+               'comments':comments}
     return render(request,'blog/post-detail.html',context)
+
+
+
 
 def news_letter(request):
     emails = Subscribers.objects.all()
@@ -97,11 +116,6 @@ def news_letter(request):
         print(latest_post)
     context = {'form':form}
     return render(request, 'newsletter.html',context)
-
-
-
-
-
 
 def about(request):
     context = {}
