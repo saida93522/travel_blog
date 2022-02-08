@@ -3,8 +3,13 @@
     {% include 'head.html' %}
   </head>
   <body>
-    {% include 'navbar.html' %} {% block content %} {% endblock content %}
-    {%comment %} jgbjksbgkhjsdbjksdbgjkljgnjgjvgskrbgrsbgdsgbdjb{% endcomment %}
+    {% include 'navbar.html' %}
+    <!-- message alerts -->
+
+    <!--content-->
+    {% block content %} {% endblock content %} {%comment %}
+    jgbjksbgkhjsdbjksdbgjkljgnjgjvgskrbgrsbgdsgbdjb{% endcomment %}
+    <!-- footer/js-->
     {% include 'footer.html' %}{% include 'scripts.html' %}
   </body>
 </html>
