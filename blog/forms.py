@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelChoiceField
 
 from newsletter.models import Subscribers, NewsLetter
-from .models import Post
+from .models import Post,Comment
 
 class CommentForm(forms.ModelForm):
     class Meta:

@@ -68,7 +68,7 @@ def blog(request):
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
-    blog_post = Post.objects.get(id=pk)
+    blog_post = Post.get_object_or_404(id=pk)
     country_count = get_country()
     context = {'articles':blog_post, 'country_count':country_count}
     return render(request,'blog/post-detail.html',context)
