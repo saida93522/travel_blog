@@ -7,6 +7,8 @@ class Author(models.Model):
     twitter = models.CharField(max_length=200,blank=True,null=True)
     instagram = models.CharField(max_length=200,blank=True,null=True)
     tiktok = models.CharField(max_length=200,blank=True,null=True)
+    philo = models.TextField()
+    bio = models.TextField()
     objects = models.Manager()
     def __str__(self):
         return self.author.username
