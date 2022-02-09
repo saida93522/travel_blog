@@ -39,9 +39,6 @@ def search(request):
     context = {'articles':articles,'q':query}
     return render(request,'blog/search.html',context)
 
-
-
-
 def blog(request):
     articles = Post.objects.prefetch_related('country')
     country_count = get_country()
@@ -88,10 +85,6 @@ def post(request,pk):
                'new_comment':new_comment,
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
-
-
-            
-
 
 def news_letter(request):
     emails = Subscribers.objects.all()
