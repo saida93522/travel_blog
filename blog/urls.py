@@ -12,6 +12,7 @@ urlpatterns = [
     path('blog/',views.blog, name='blog'),
     path('post/<str:pk>/',views.post, name='post'),
 
+
     # Profile
     path('about/',views.about, name='about'),
 

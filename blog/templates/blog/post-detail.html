@@ -206,8 +206,8 @@
                   </div>
                 </div>
                 <!-- Single comment-->
+                {% for comment in comments %}
                 <div class="d-flex">
-                  {% for comment in comments %}
                   <div class="flex-shrink-0">
                     <img
                       class="rounded-circle"
@@ -220,8 +220,8 @@
                     <div class="fw-bold">{{comment.name}}</div>
                     {{comment.content}}
                   </div>
-                  {% empty %} No comments yet. {% endfor %}
                 </div>
+                {% empty %} No comments yet. {% endfor %}
               </div>
             </div>
           </section>

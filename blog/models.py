@@ -30,15 +30,13 @@ class Post(models.Model):
     # ('published', 'Published'),
     # )
     #status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='draft')
-    def get_comments(self):
-        return self.comments.filter(parent=None).filter(active=True)
+   
     def __str__(self):
         return self.owner.author.username
 
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE) # the parent comment
     name = models.CharField(max_length=50) 
     email = models.EmailField()
     content = models.TextField()
@@ -51,5 +49,7 @@ class Comment(models.Model):
         
     def __str__(self):
         return (f'Comment by {self.name}')
+
+
     
         

@@ -10,7 +10,7 @@ from newsletter.models import Subscribers, NewsLetter
 from .forms import SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country
 
-from .models import Author, Country, Post
+from .models import Author, Country, Post, Comment
 
 def home(request):
     latest_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
@@ -90,6 +90,7 @@ def post(request,pk):
     return render(request,'blog/post-detail.html',context)
 
 
+            
 
 
 def news_letter(request):
