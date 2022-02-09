@@ -35,7 +35,9 @@
             class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
           >
             <div class="views fw-bold">{{post.owner}}</div>
-            <div class="stats"><i class="far fa-comment"></i> 5</div>
+            <div class="stats">
+              <i class="far fa-comment"></i> {{post.comments.count}}
+            </div>
           </div>
         </div>
       </div>
