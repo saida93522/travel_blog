@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     #my-apps
     'blog.apps.BlogConfig',
     'newsletter.apps.NewsletterConfig',
-     'crispy_forms',
+    'tinymce',
+    'crispy_forms',
    
 ]
 

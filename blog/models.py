@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce import HTMLField
 
 class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -8,7 +9,7 @@ class Author(models.Model):
     instagram = models.CharField(max_length=200,blank=True,null=True)
     tiktok = models.CharField(max_length=200,blank=True,null=True)
     philo = models.TextField(default='')
-    bio = models.TextField(default='')
+    bio = HTMLField()
     objects = models.Manager()
     def __str__(self):
         return self.author.username
@@ -24,7 +25,7 @@ class Post(models.Model):
     owner = models.ForeignKey(Author, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     short_intro = models.CharField(max_length=300)
-    body = models.TextField()
+    body = HTMLField()
     thumbnail =models.ImageField(null=True,blank=True, upload_to='images')
     created_at = models.DateTimeField(auto_now_add=True)
     country = models.ManyToManyField(Country)    
