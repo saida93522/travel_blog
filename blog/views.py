@@ -107,7 +107,7 @@ def news_letter(request):
             return redirect('news_letter')
     else:
         form = NewsLetterForm()
-        print(latest_post)
+ 
     context = {'form':form}
     return render(request, 'newsletter.html',context)
 
