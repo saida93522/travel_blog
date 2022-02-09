@@ -13,6 +13,7 @@ from .utils import get_country
 from .models import Author, Country, Post, Comment
 
 def home(request):
+    intro = Author.objects.all()
     latest_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
     form = SubscribersForm(request.POST)
     if request.method == 'POST':
@@ -23,7 +24,7 @@ def home(request):
             return redirect('/')
     else:
         form = SubscribersForm()
-    context = {"latest":latest_post, 'form':form}
+    context = {"latest":latest_post,'intro':intro, 'form':form}
     return render(request,'blog/home.html',context)
 
 def search(request):

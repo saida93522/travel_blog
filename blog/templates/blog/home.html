@@ -46,15 +46,10 @@
             <h6 class="text-left">travel philosophy</h6>
             <hr class="hr-blog mt-2" />
           </header>
+          {% for philo in intro %}
+          <p class="">{{philo.philo}}</p>
+
           <div class="philo-title-box text-left mb-3">
-            <p class="">
-              Traveling is an adventure into the unknown. This includes
-              exploring new areas, and forming bonds with the locals.
-            </p>
-            <p class="">
-              I write about my experiences traveling across the world. Come
-              along with me as I embark on new adventures.
-            </p>
             <a href="{% url 'about' %}" type="button" class="btn readmore">
               Read More
             </a>
@@ -64,23 +59,27 @@
           <div class="media-box mt-2">
             <ul class="list-inline social-menu">
               <li class="list-inline-item">
-                <a href="#" class="social-link"
+                <a href="{{philo.twitter}}" target="_blank" class="social-link"
                   ><i class="fab fa-twitter"></i
                 ></a>
               </li>
               <li class="list-inline-item">
-                <a href="#" class="social-link"
+                <a
+                  href="{{philo.instagram}}"
+                  target="_blank"
+                  class="social-link"
                   ><i class="fab fa-instagram"></i
                 ></a>
               </li>
 
               <li class="list-inline-item">
-                <a href="#" class="social-link"
+                <a href="{{philo.tiktok}}" target="_blank" class="social-link"
                   ><i class="fab fa-tiktok"></i
                 ></a>
               </li>
             </ul>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
