@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(default='avatar.jpg', upload_to='images')
+    twitter = models.CharField(max_length=200,blank=True,null=True)
+    instagram = models.CharField(max_length=200,blank=True,null=True)
+    tiktok = models.CharField(max_length=200,blank=True,null=True)
     objects = models.Manager()
     def __str__(self):
         return self.author.username
