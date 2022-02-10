@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
+# from django.contrib.auth import login
+
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
 from django.conf import settings
@@ -86,6 +88,20 @@ def post(request,pk):
                'new_comment':new_comment,
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
+
+
+def create_post(request):
+    context = {}
+    return render(request,'blog/about.html',context)
+
+def update_post(request,pk):
+    context = {}
+    return render(request,'blog/about.html',context)
+
+def delete_post(request,pk):
+    context = {}
+    return render(request,'blog/about.html',context)
+
 
 def news_letter(request):
     emails = Subscribers.objects.all()
