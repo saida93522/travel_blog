@@ -1,8 +1,26 @@
 from django import forms
-from django.forms import ModelChoiceField
+from tinymce import TinyMCE
 
 from newsletter.models import Subscribers, NewsLetter
-from .models import Post,Comment
+from .models import Post,Comment,Author
+
+
+class TinyMCEWidget(TinyMCE):
+	def use_required_attribute(self, *args):
+		return False
+
+
+class PostForm(forms.ModelForm):
+	body = forms.CharField(
+		widget=TinyMCEWidget(
+			attrs={'required': False, 'cols': 50, 'rows': 10}
+		)
+	)
+	class Meta:
+		model = Post
+		fields = ('title','short_intro','body', 'thumbnail','country','is_featured')
+
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
