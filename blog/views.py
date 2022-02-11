@@ -87,7 +87,7 @@ def post(request,pk):
     else:
         form = CommentForm()
     context = {'articles':blog_post,
-               'latest':latest_post,
+             
                'country_count':country_count, 
                'form':form, 
                'new_comment':new_comment,
