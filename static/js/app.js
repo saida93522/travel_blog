@@ -83,7 +83,7 @@ onscroll(document, navbarlinksActive);
 /**
  * Toggle .header-scrolled class to #header when page is scrolled
  */
-let selectHeader = select("#header");
+// let selectHeader = select("#header");
 // if (selectHeader) {
 //   const headerScrolled = () => {
 //     if (window.scrollY > 100) {

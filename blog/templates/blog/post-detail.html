@@ -37,7 +37,9 @@
 
           <!-- Post content-->
           <article class="post-detail">
-            {{articles.body|safe}}
+            <div class="post-body">
+              <p>{{articles.body|safe}}</p>
+            </div>
 
             <div>
               <h6 class="banner-heading fw-bolder mb-4">Visit Hagia Sophia</h6>
@@ -79,7 +81,7 @@
                 </div>
                 <div class="px-3 ms-2 author">
                   <p class="mb-0 text-muted">written by</p>
-                  <h6>Stacy Walsh</h6>
+                  <h6>{{articles.owner}}</h6>
                   <div class="d-flex flex-row">
                     <ul class="social mb-0 list-inline mt-2">
                       <li class="list-inline-item text-muted">

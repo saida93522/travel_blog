@@ -9,15 +9,16 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
-from .forms import SubscribersForm, NewsLetterForm, CommentForm
+from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country
 
 from .models import Author, Country, Post, Comment
 
 def home(request):
     intro = Author.objects.all()
-    latest_post = Post.objects.prefetch_related('country').order_by('-created_at')[0:3]
-    form = SubscribersForm(request.POST)
+    posts = Post.objects.prefetch_related('country')
+    latest_post = posts.order_by('-created_at')[0:3]
+    form = SubscribersForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         form = SubscribersForm(request.POST)
         if form.is_valid():
@@ -43,7 +44,8 @@ def search(request):
     return render(request,'blog/search.html',context)
 
 def blog(request):
-    articles = Post.objects.prefetch_related('country')
+    articles = Post.objects.prefetch_related('country').order_by('-created_at')
+    
     country_count = get_country()
     featured = Post.objects.filter(is_featured=True)
     #render queryset in pages 4
@@ -63,6 +65,7 @@ def blog(request):
     
     context = {'featured':featured,
                'articles':paginated_page,
+             
                'query_page':query_page,
                'country_count':country_count}
     return render(request,'blog/blog.html',context)
@@ -70,6 +73,7 @@ def blog(request):
 def post(request,pk):
     country_count = get_country()
     blog_post = get_object_or_404(Post, id=pk)
+    
     comments = blog_post.comments.filter(is_active=True)
     new_comment = None
     if request.method == 'POST':
@@ -82,17 +86,31 @@ def post(request,pk):
             new_comment.save()
     else:
         form = CommentForm()
-    context = {'articles':blog_post, 
+    context = {'articles':blog_post,
+               'latest':latest_post,
                'country_count':country_count, 
                'form':form, 
                'new_comment':new_comment,
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
 
+def get_user(author):
+    qs = Author.objects.filter(author=author)
+    if qs.exists():
+        return qs[0]
+    return None
 
 def create_post(request):
-    context = {}
-    return render(request,'blog/about.html',context)
+    form = PostForm(request.POST or None, request.FILES or None)
+    owner = get_user(request.user)
+   
+    if request.method == 'POST':
+        if form.is_valid():
+            form.instance.owner = owner
+            form.save()
+            return redirect('post', pk=form.instance.id)
+    context = {'form':form}
+    return render(request,'blog/create_post.html',context)
 
 def update_post(request,pk):
     context = {}

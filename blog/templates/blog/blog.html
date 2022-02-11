@@ -32,7 +32,7 @@
                   <hr class="hr-blog mt-2" />
                 </header>
                 {% for post in featured %}
-                {% if post.is_featured %}
+               
                 <div class="card">
                   <a href="{% url 'post' post.id %}">
                     <img class="card-img-top img-fluid" 
@@ -53,7 +53,7 @@
                     <a class="btn  readmore" href="{% url 'post' post.id %}">Read more →</a>
                   </div>
                 </div>
-               {% endif %}
+               
                {% endfor %}
               </article>
               <!-- Nested row for non-featured blog posts-->
@@ -103,7 +103,8 @@
             </div>
             
             <!-- Side widgets-->
-            {% include 'blog/sidebar.html' with articles=articles country_count=country_count %}
+            {% include 'blog/sidebar.html' with articles=articles country_count=country_count %} 
+            
 
           </div>
         </div>

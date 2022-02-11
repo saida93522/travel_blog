@@ -1,5 +1,5 @@
 from django import forms
-from tinymce import TinyMCE
+from tinymce.widgets import TinyMCE
 
 from newsletter.models import Subscribers, NewsLetter
 from .models import Post,Comment,Author
@@ -13,14 +13,13 @@ class TinyMCEWidget(TinyMCE):
 class PostForm(forms.ModelForm):
 	body = forms.CharField(
 		widget=TinyMCEWidget(
-			attrs={'required': False, 'cols': 50, 'rows': 10}
+			attrs={'required': False, 'cols': 70, 'rows': 30}
 		)
 	)
 	class Meta:
 		model = Post
-		fields = ('title','short_intro','body', 'thumbnail','country','is_featured')
-
-
+		fields = ['title','short_intro','body', 'thumbnail','country','is_featured']
+		# widgets = {'body':TinyMCE(attrs={"cols":70, "rows":20})}
 
 class CommentForm(forms.ModelForm):
     class Meta:

@@ -1,14 +1,15 @@
+{% comment %} # \travel_blog\templates\main.html {% endcomment %}
+<!---->
+{% load static %}
 <html lang="en">
-  <head>
-    {% include 'head.html' %}
-  </head>
+  {% include 'head.html' %}
+
   <body>
     {% include 'navbar.html' %}
     <!-- message alerts -->
 
     <!--content-->
-    {% block content %} {% endblock content %} {%comment %}
-    jgbjksbgkhjsdbjksdbgjkljgnjgjvgskrbgrsbgdsgbdjb{% endcomment %}
+    {% block content %} {% endblock content %}
     <!-- footer/js-->
     {% include 'footer.html' %}{% include 'scripts.html' %}
   </body>

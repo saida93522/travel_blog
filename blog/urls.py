@@ -13,9 +13,9 @@ urlpatterns = [
     path('post/<str:pk>/',views.post, name='post'),
 
     #CRUD
-    path('post/',views.create_post, name='create_post'),
-    path('post/<str:pk>/',views.update_post, name='update_post'),
-    path('post/<str:pk>/',views.delete_post, name='delete_post'),
+    path('create_post/',views.create_post, name='create_post'),
+    path('post/<str:pk>/update/',views.update_post, name='update_post'),
+    path('post/<str:pk>/delete/',views.delete_post, name='delete_post'),
 
 
     # Profile

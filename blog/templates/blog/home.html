@@ -86,6 +86,8 @@
   </section>
 
   <!-- ======= Feature Blog Post ======= -->
-  {% include 'blog/feature_blog.html' %} {% include 'blog/subscribe.html' %}
+  {% include 'blog/feature_blog.html' with latest=latest %}
+  <!---->
+  {% include 'blog/subscribe.html' %}
 </main>
 {% endblock content %}

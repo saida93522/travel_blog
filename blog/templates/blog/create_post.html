@@ -1,0 +1,41 @@
+{% extends 'main.html' %} {% load crispy_forms_tags %}
+<!--crispy form -->
+{% block content %}
+
+<main id="main-content">
+  <section>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+          <h1 class="fw-light">New Post</h1>
+          {{ form.media }}
+          <form
+            method="POST"
+            action="{% url 'create_post' %}"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %} {{form.title|as_crispy_field }}
+            <!---->
+            {{form.short_intro|as_crispy_field }}
+            <!---->
+
+            {{form.body|as_crispy_field }}
+
+            <!---->
+            {{form.thumbnail|as_crispy_field }}
+            <!---->
+
+            {{form.country|as_crispy_field }}
+            <!---->
+
+            {{form.is_featured|as_crispy_field }}
+            <button class="btn btn-success" type="submit"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock content %}
