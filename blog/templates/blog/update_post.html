@@ -1,0 +1,31 @@
+{% extends 'main.html' %} {% load crispy_forms_tags %}
+<!--crispy form -->
+{% block content %}
+<main id="main-content">
+  <section class="mt-5">
+    <!-- Page Content -->
+    <div class="container p-5">
+      <div class="card border-0 shadow">
+        <div class="card-body mt-2 p-5">
+          <h1 class="fw-bold mb-3">New Post</h1>
+          {{ form.media }}
+          <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <strong class="mb-5">{{form|crispy }}</strong>
+            <!---->
+
+            <button class="btn btn-success mt-3" type="submit">Save</button>
+            <a
+              href="{% url 'delete_post' %}"
+              class="btn btn-link btn-danger mt-3"
+              type="submit"
+              >Delete</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock content %}

@@ -3,34 +3,46 @@
 {% block content %}
 
 <main id="main-content">
-  <section>
+  <section class="mt-5">
     <!-- Page Content -->
-    <div class="container">
-      <div class="card border-0 shadow my-5">
-        <div class="card-body p-5">
-          <h1 class="fw-light">New Post</h1>
+    <div class="container p-5">
+      <div class="card border-0 shadow">
+        <div class="card-body mt-2 p-5">
+          <h1 class="fw-bold mb-3">New Post</h1>
           {{ form.media }}
           <form
             method="POST"
             action="{% url 'create_post' %}"
             enctype="multipart/form-data"
           >
-            {% csrf_token %} {{form.title|as_crispy_field }}
-            <!---->
-            {{form.short_intro|as_crispy_field }}
+            {% csrf_token %}
+
+            <strong class="mb-5">{{form.title|as_crispy_field }}</strong>
             <!---->
 
-            {{form.body|as_crispy_field }}
-
+            <strong class="fw-bold pb-2"
+              >{{form.short_intro|as_crispy_field }}</strong
+            >
             <!---->
-            {{form.thumbnail|as_crispy_field }}
-            <!---->
-
-            {{form.country|as_crispy_field }}
+            <strong class="fw-bold mb-2">{{form.body|as_crispy_field }}</strong>
             <!---->
 
-            {{form.is_featured|as_crispy_field }}
-            <button class="btn btn-success" type="submit"></button>
+            <strong class="fw-bold pb-2"
+              >{{form.thumbnail|as_crispy_field }}</strong
+            >
+            <!---->
+
+            <strong class="fw-bold pb-2"
+              >{{form.country|as_crispy_field }}</strong
+            >
+            <!---->
+
+            <strong class="fw-bold pb-2"
+              >{{form.is_featured|as_crispy_field }}</strong
+            >
+            <!---->
+
+            <button class="btn btn-success mt-3" type="submit">Post</button>
           </form>
         </div>
       </div>

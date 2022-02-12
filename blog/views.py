@@ -113,8 +113,17 @@ def create_post(request):
     return render(request,'blog/create_post.html',context)
 
 def update_post(request,pk):
-    context = {}
-    return render(request,'blog/about.html',context)
+    post = get_object_or_404(Post, id=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your Post was successfully updated.')
+            return redirect('post',pk=post.id)
+    else:
+        form = PostForm(instance=post)
+    context = {'form':form}
+    return render(request,'blog/update_post.html',context)
 
 def delete_post(request,pk):
     context = {}

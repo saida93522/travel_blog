@@ -8,6 +8,16 @@
 </section>
 <main id="main-content">
   <div class="container p-5">
+    <!-- message alerts -->
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"
+      {% endif %}>{{ message }}</li>
+      <!--content-->
+      {% endfor %}
+    </ul>
+    {% endif %}
     <div class="row">
       <div class="col-lg-8">
         <section>
@@ -31,9 +41,13 @@
                 <a class="category" href="#!">| {{place}}</a>
               </span>
               {% endfor %}
+              <a href="{% url 'update_post' articles.id %}"
+                ><i class="far fa-edit px-2"></i
+              ></a>
             </small>
             <hr class="hr-blog mt-2 w-100" />
           </header>
+          <!--edit-->
 
           <!-- Post content-->
           <article class="post-detail">
@@ -112,7 +126,9 @@
               <div class="mt-0 mx-2">
                 <!-- verify user -->
                 <!--<a href="#"><i class="bx bx-edit-alt"></i></a>-->
-                <a href="#"><i class="far fa-edit"></i></a>
+                <a href="{% url 'update_post' articles.id %}"
+                  ><i class="far fa-edit"></i
+                ></a>
               </div>
             </div>
           </div>
