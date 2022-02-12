@@ -158,5 +158,14 @@ def news_letter(request):
     return render(request, 'newsletter.html',context)
 
 def about(request):
-    context = {}
-    return render(request,'blog/about.html',context)
+    form = SubscribersForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        form = SubscribersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You have successfully signed up for our newsletter.')
+            return redirect('blog')
+    else:
+        form = SubscribersForm()
+    context = {'form':form}
+    return render(request,'blog/banner.html',context)

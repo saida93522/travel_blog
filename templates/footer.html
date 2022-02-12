@@ -16,7 +16,7 @@
         <ul class="list-unstyled text-muted small">
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'blog' %}">Blog</a></li>
-          <li><a href="news.html">Subscribe</a></li>
+
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'news_letter' %}">Newsletter</a></li>
         </ul>
@@ -26,7 +26,7 @@
     <hr />
     <p class="text-center small text-muted mb-0">
       &copy; Copyrights. All rights reserved.
-      <a class="text-primary" href="#">TinyWanderlust.com</a>
+      <a class="text-primary" href="{% url 'home' %}">TinyWanderlust.com</a>
     </p>
   </div>
 </footer>

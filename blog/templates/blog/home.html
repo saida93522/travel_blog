@@ -41,6 +41,7 @@
           </div>
         </div>
         <!-- col 2 -->
+
         <div class="col-lg-6 col-md-12">
           <header class="banner-heading">
             <h6 class="text-left">travel philosophy</h6>
@@ -88,6 +89,6 @@
   <!-- ======= Feature Blog Post ======= -->
   {% include 'blog/feature_blog.html' with latest=latest %}
   <!---->
-  {% include 'blog/subscribe.html' %}
+  {% include 'blog/subscribe.html' with form=form %}
 </main>
 {% endblock content %}
