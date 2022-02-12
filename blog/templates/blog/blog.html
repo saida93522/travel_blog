@@ -23,6 +23,16 @@
         <!-- Page content-->
         <div class="container p-5">
           <div class="row">
+            <!-- message alerts -->
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"
+            {% endif %}>{{ message }}</li>
+            <!--content-->
+            {% endfor %}
+          </ul>
+          {% endif %}
             <div class="col-lg-8 ">
               <!-- Blog entries-->
               <article class="featured-post mb-2"> 

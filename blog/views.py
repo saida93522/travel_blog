@@ -122,12 +122,14 @@ def update_post(request,pk):
             return redirect('post',pk=post.id)
     else:
         form = PostForm(instance=post)
-    context = {'form':form}
+    context = {'form':form, 'post':post}
     return render(request,'blog/update_post.html',context)
 
 def delete_post(request,pk):
-    context = {}
-    return render(request,'blog/about.html',context)
+    post = get_object_or_404(Post, id=pk)
+    post.delete()
+    messages.error(request,('Post was deleted successfully!'))
+    return redirect('blog')
 
 
 def news_letter(request):
