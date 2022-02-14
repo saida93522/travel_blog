@@ -108,6 +108,7 @@
                   <div class="col-lg-12 mt-5">
                     {% include 'blog/pagination.html' with articles=articles  %}
                   </div>
+                  
                 </div>
               </article>
             </div>
@@ -117,8 +118,8 @@
             
 
           </div>
+          {% include 'blog/banner.html' with form=form %}
         </div>
       </section>
-      {% include 'blog/banner.html' %}
     </main>
 {% endblock content %}

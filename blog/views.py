@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
 from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
-from .utils import get_country
+from .utils import get_country, subscribe,get_pagination
 
 from .models import Author, Country, Post, Comment
 
@@ -45,28 +45,18 @@ def search(request):
 
 def blog(request):
     articles = Post.objects.prefetch_related('country').order_by('-created_at')
-    
+    paginated_page,query_page =  get_pagination(request,articles)
+
     country_count = get_country()
     featured = Post.objects.filter(is_featured=True)
-    #render queryset in pages 4
-    paginator = Paginator(articles,4)
-
-    # parameter used to determine what instances or page in the queryset needs to be rendered
-    query_page = 'page'
-    page_req = request.GET.get(query_page)
-
-    try:
-        paginated_page = paginator.page(page_req)
-    except PageNotAnInteger:
-        paginated_page = paginator.page(1)
-    except EmptyPage:
-        #display last page result if page is out of range
-        paginated_page = paginator.page(paginator.num_pages)
     
+    form = subscribe(request)
+    
+        
     context = {'featured':featured,
                'articles':paginated_page,
-             
                'query_page':query_page,
+               'form':form,
                'country_count':country_count}
     return render(request,'blog/blog.html',context)
 
@@ -100,6 +90,7 @@ def get_user(author):
         return qs[0]
     return None
 
+# CRUD
 def create_post(request):
     form = PostForm(request.POST or None, request.FILES or None)
     owner = get_user(request.user)
@@ -158,14 +149,5 @@ def news_letter(request):
     return render(request, 'newsletter.html',context)
 
 def about(request):
-    form = SubscribersForm(request.POST or None, request.FILES or None)
-    if request.method == 'POST':
-        form = SubscribersForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'You have successfully signed up for our newsletter.')
-            return redirect('blog')
-    else:
-        form = SubscribersForm()
-    context = {'form':form}
-    return render(request,'blog/banner.html',context)
+    context={}
+    return render(request,'blog/about.html',context)
