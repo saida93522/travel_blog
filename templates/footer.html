@@ -2,14 +2,17 @@
 
 <!-- Footer-->
 <footer class="pt-5">
-  <div class="container d-flex flex-column px-5">
+  <div class="container d-flex flex-column p-5">
     <hr />
     <div class="row justify-content-between">
       <div class="col-lg-6">
         <h6 class="small pb-2">TinyWanderlust</h6>
         <p class="small text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt.
+          TinyWanderlust is a travel blog by {{request.user.author}}.
+        </p>
+        <p class="small text-muted">
+          She writes about her travel adventures in order to spark the
+          wanderlust in all of us.
         </p>
       </div>
       <div class="col-lg-4 align-item-end">
@@ -22,12 +25,12 @@
           <li><a href="{% url 'news_letter' %}">Newsletter</a></li>
         </ul>
       </div>
+      <hr />
     </div>
 
-    <hr />
-    <p class="text-center small text-muted mb-0">
+    <p class="text-center small text-muted pt-4 mb-0">
       &copy; Copyrights. All rights reserved.
-      <a class="text-primary" href="{% url 'home' %}">TinyWanderlust.com</a>
+      <a class="text" href="{% url 'home' %}">TinyWanderlust.com</a>
     </p>
   </div>
 </footer>
