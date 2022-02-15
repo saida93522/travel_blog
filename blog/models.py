@@ -31,11 +31,6 @@ class Post(models.Model):
     country = models.ManyToManyField(Country)    
     is_featured = models.BooleanField(default=False)
     objects = models.Manager()
-    # STATUS_CHOICES = (
-    # ('draft', 'Draft'),
-    # ('published', 'Published'),
-    # )
-    #status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='draft')
    
     def __str__(self):
         return self.owner.author.username
