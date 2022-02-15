@@ -149,5 +149,6 @@ def news_letter(request):
     return render(request, 'newsletter.html',context)
 
 def about(request):
-    context={}
+    country_count = get_country()
+    context={'country_count':country_count}
     return render(request,'blog/about.html',context)
