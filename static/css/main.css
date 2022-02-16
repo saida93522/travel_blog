@@ -705,3 +705,8 @@ footer a:hover {
   /* width: 15rem; */
   height: 15rem;
 }
+.page-header .thumbnail {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
