@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 from tinymce.models import HTMLField
 
 class Author(models.Model):
@@ -10,6 +11,7 @@ class Author(models.Model):
     tiktok = models.CharField(max_length=200,blank=True,null=True)
     philo = models.TextField(default='')
     bio = HTMLField()
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
     def __str__(self):
         return self.author.username
@@ -30,6 +32,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     country = models.ManyToManyField(Country)    
     is_featured = models.BooleanField(default=False)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
    
     def __str__(self):
@@ -44,9 +47,15 @@ class Comment(models.Model):
     avatar = models.ImageField(default='default.svg', upload_to='images')
     created_on = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
 
     class Meta:
+        """ Ensure that a user can only leave one review per post. 
+        By binding owner and project values so no instance of a review can have the same owner and the same project.
+    """
+    
         ordering = ['created_on']
+        unique_together = [['email','post']]
         
     def __str__(self):
         return (f'Comment by {self.name}')

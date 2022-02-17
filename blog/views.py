@@ -92,19 +92,25 @@ def get_user(author):
 
 # CRUD
 def create_post(request):
-    form = PostForm(request.POST or None, request.FILES or None)
-    owner = get_user(request.user)
+    form = PostForm()
+    # owner = get_user(request.user.author)
+    owner = request.user.author
    
     if request.method == 'POST':
+        form = PostForm(request.POST or None, request.FILES or None)
         if form.is_valid():
-            form.instance.owner = owner
-            form.save()
-            return redirect('post', pk=form.instance.id)
+            new_post = form.save(commit=False)
+            new_post.owner = owner
+            messages.success(request,('Post was added successfully!'))
+            new_post.save()
+            return redirect('post')
     context = {'form':form}
     return render(request,'blog/create_post.html',context)
 
 def update_post(request,pk):
-    post = get_object_or_404(Post, id=pk)
+    owner = request.user.author
+    post = owner.post_set.get(id=pk)
+    form = PostForm(instance=post)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
