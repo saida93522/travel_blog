@@ -50,8 +50,7 @@ class Comment(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
 
     class Meta:
-        """ Ensure that a user can only leave one review per post. 
-        By binding owner and project values so no instance of a review can have the same owner and the same project.
+        """ Ensure that a user can only leave one review per post.
     """
     
         ordering = ['created_on']

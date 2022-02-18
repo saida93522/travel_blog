@@ -62,9 +62,9 @@ def blog(request):
 
 def post(request,pk):
     country_count = get_country()
-    blog_post = get_object_or_404(Post, id=pk)
+    post = get_object_or_404(Post, id=pk)
     
-    comments = blog_post.comments.filter(is_active=True)
+    comments = post.comments.filter(is_active=True)
     new_comment = None
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -72,11 +72,11 @@ def post(request,pk):
             # create comment
             new_comment = form.save(commit=False)
             # Assign post to comment
-            new_comment.post = blog_post
+            new_comment.post = post
             new_comment.save()
     else:
         form = CommentForm()
-    context = {'articles':blog_post,
+    context = {'articles':post,
              
                'country_count':country_count, 
                'form':form, 
@@ -103,7 +103,7 @@ def create_post(request):
             new_post.owner = owner
             messages.success(request,('Post was added successfully!'))
             new_post.save()
-            return redirect('post')
+            return redirect('post', pk=owner.id)
     context = {'form':form}
     return render(request,'blog/create_post.html',context)
 
