@@ -92,10 +92,10 @@ def get_user(author):
 
 # CRUD
 def create_post(request):
-    form = PostForm()
+    
     # owner = get_user(request.user.author)
     owner = request.user.author
-   
+    form = PostForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         form = PostForm(request.POST or None, request.FILES or None)
         if form.is_valid():
@@ -103,7 +103,7 @@ def create_post(request):
             new_post.owner = owner
             messages.success(request,('Post was added successfully!'))
             new_post.save()
-            return redirect('post', pk=owner.id)
+            return redirect('post', pk=new_post.id)
     context = {'form':form}
     return render(request,'blog/create_post.html',context)
 
