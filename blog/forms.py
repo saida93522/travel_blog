@@ -19,7 +19,6 @@ class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		fields = ['title','short_intro','body', 'thumbnail','country','is_featured']
-		# widgets = {'body':TinyMCE(attrs={"cols":70, "rows":20})}
 
 class CommentForm(forms.ModelForm):
     class Meta:

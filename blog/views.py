@@ -14,7 +14,9 @@ from .utils import get_country, subscribe,get_pagination
 
 from .models import Author, Country, Post, Comment
 import re
-CLEANER = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+
+
+
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
@@ -84,16 +86,9 @@ def post(request,pk):
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
 
-# def get_user(author):
-#     qs = Author.objects.filter(author=author)
-#     if qs.exists():
-#         return qs[0]
-#     return None
 
 # CRUD
 def create_post(request):
-    
-    # owner = get_user(request.user.author)
     owner = request.user.author
     form = PostForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
@@ -128,6 +123,10 @@ def delete_post(request,pk):
     messages.error(request,('Post was deleted successfully!'))
     return redirect('blog')
 
+def clean_msg(msg):
+    CLEANER = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+    clean = re.sub(CLEANER,'',msg)
+    return clean
 
 def news_letter(request):
     emails = Subscribers.objects.all()
@@ -139,10 +138,11 @@ def news_letter(request):
             form.save()
             title = form.cleaned_data.get('title')
             message = form.cleaned_data.get('message')
-            clean_msg = re.sub(CLEANER,'',message)
+            email_msg = clean_msg(message)
+            
             send_mail(
                 title,
-                clean_msg,
+                email_msg,
                 'tinywanderlust@example.com', 
                 mail_list,
                 fail_silently=False,
