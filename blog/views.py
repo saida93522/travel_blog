@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
-# from django.contrib.auth import login
+from django.core.exceptions import *
 
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
@@ -61,10 +61,15 @@ def blog(request):
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
-    country_count = get_country()
-    post = get_object_or_404(Post, id=pk)
+    try:
+        country_count = get_country()
+        post = get_object_or_404(Post, id=pk)
+        comments = post.comments.filter(is_active=True)
+    except NotFound:
+        print('object does not exist.')
+        
     
-    comments = post.comments.filter(is_active=True)
+        
     new_comment = None
     if request.method == 'POST':
         form = CommentForm(request.POST)
