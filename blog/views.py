@@ -61,15 +61,9 @@ def blog(request):
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
-    try:
-        country_count = get_country()
-        post = get_object_or_404(Post, id=pk)
-        comments = post.comments.filter(is_active=True)
-    except NotFound:
-        print('object does not exist.')
-        
-    
-        
+    country_count = get_country()
+    post = get_object_or_404(Post, id=pk)
+    comments = post.comments.filter(is_active=True)
     new_comment = None
     if request.method == 'POST':
         form = CommentForm(request.POST)
