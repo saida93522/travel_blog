@@ -13,7 +13,8 @@ from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country, subscribe,get_pagination
 
 from .models import Author, Country, Post, Comment
-
+import re
+CLEANER = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
@@ -83,11 +84,11 @@ def post(request,pk):
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
 
-def get_user(author):
-    qs = Author.objects.filter(author=author)
-    if qs.exists():
-        return qs[0]
-    return None
+# def get_user(author):
+#     qs = Author.objects.filter(author=author)
+#     if qs.exists():
+#         return qs[0]
+#     return None
 
 # CRUD
 def create_post(request):
@@ -137,9 +138,11 @@ def news_letter(request):
         if form.is_valid():
             form.save()
             title = form.cleaned_data.get('title')
+            message = form.cleaned_data.get('message')
+            clean_msg = re.sub(CLEANER,'',message)
             send_mail(
                 title,
-                'message',
+                clean_msg,
                 'tinywanderlust@example.com', 
                 mail_list,
                 fail_silently=False,
@@ -151,7 +154,7 @@ def news_letter(request):
         form = NewsLetterForm()
  
     context = {'form':form}
-    return render(request, 'newsletter.html',context)
+    return render(request, 'blog/newsletter.html',context)
 
 def about(request):
     author = request.user.author

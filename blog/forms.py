@@ -13,7 +13,7 @@ class TinyMCEWidget(TinyMCE):
 class PostForm(forms.ModelForm):
 	body = forms.CharField(
 		widget=TinyMCEWidget(
-			attrs={'required': False, 'cols': 70, 'rows': 30}
+			attrs={'required': False,'cols': 70, 'rows': 30}
 		)
 	)
 	class Meta:
@@ -32,6 +32,7 @@ class SubscribersForm(forms.ModelForm):
         fields = ['email']
 
 class NewsLetterForm(forms.ModelForm):
+    message = forms.CharField(widget=TinyMCEWidget(attrs={'required':False, 'cols':70, 'rows':30}))
     class Meta:
         model = NewsLetter
-        fields = ['title']
+        fields = ['title','message']

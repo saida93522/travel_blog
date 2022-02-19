@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from blog.models import Post
-
+from tinymce.models import HTMLField
 
 class Subscribers(models.Model):
     email = models.EmailField(null=True)
@@ -15,8 +15,8 @@ class Subscribers(models.Model):
 
 class NewsLetter(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
+    message = HTMLField()
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
-    # message = models.ForeignKey(Post, on_delete=models.CASCADE)
     
 
     def __str__(self):

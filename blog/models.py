@@ -54,7 +54,7 @@ class Comment(models.Model):
     """
     
         ordering = ['created_on']
-        unique_together = [['email','post']]
+    
         
     def __str__(self):
         return (f'Comment by {self.name}')
