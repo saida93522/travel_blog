@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.core.exceptions import *
+from django.views.decorators.cache import cache_page
 
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
@@ -16,7 +17,7 @@ from .models import Author, Country, Post, Comment
 import re
 
 
-
+@cache_page(60 * 15 )
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
@@ -47,6 +48,8 @@ def search(request):
     context = {'articles':articles,'q':query}
     return render(request,'blog/search.html',context)
 
+
+@cache_page(60 * 15 )
 def blog(request):
     articles = Post.objects.prefetch_related('country').order_by('-created_at')
     paginated_page,query_page =  get_pagination(request,articles)
@@ -64,6 +67,7 @@ def blog(request):
                'country_count':country_count}
     return render(request,'blog/blog.html',context)
 
+@cache_page(60 * 15 )
 def post(request,pk):
     country_count = get_country()
     post = get_object_or_404(Post, id=pk)

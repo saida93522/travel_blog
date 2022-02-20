@@ -1,3 +1,3 @@
-# Travel Blog
+# TinyWanderlust
 
-Travel the world and share your experience.
+Travel Blog
