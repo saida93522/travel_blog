@@ -32,9 +32,12 @@
           <li class="nav-item align-self-start">
             <a class="nav-link" href="{% url 'blog' %}">Blog</a>
           </li>
+          {% if request.user.is_authenticated %}
+
           <li class="nav-item align-self-start">
             <a href="{% url 'create_post' %}" class="nav-link">Create</a>
           </li>
+          {% endif %}
           <li class="nav-item align-self-start">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
