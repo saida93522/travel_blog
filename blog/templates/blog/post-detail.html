@@ -113,7 +113,7 @@
             </header>
             <div>
               <!-- Comment form-->
-              <form class="mb-4" method="POST">
+              <form class="mb-4" method="POST" enctype="multipart/form-data">
                 {{ form|crispy}} {% csrf_token %}
                 <input
                   class="mt-4 form-control"
@@ -130,7 +130,7 @@
                   <div class="flex-shrink-0">
                     <img
                       class="rounded-circle"
-                      src="{{comment.avatar.url}}"
+                      src="{{comment.user_img.url}}"
                       alt="..."
                       width="80"
                     />
@@ -141,7 +141,7 @@
                         {{comment.created_on|timesince}}
                       </span>
                     </div>
-                    {{comment.content}}
+                    {{comment.content | linebreaks }}
                   </div>
                 </div>
                 <hr>

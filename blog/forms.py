@@ -23,7 +23,7 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['name','email','content','avatar']
+        fields = ['name','email','content','user_img']
     
 class SubscribersForm(forms.ModelForm):
     class Meta:

@@ -69,13 +69,15 @@ def post(request,pk):
     comments = post.comments.filter(is_active=True)
     new_comment = None
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
             # create comment
             new_comment = form.save(commit=False)
             # Assign post to comment
             new_comment.post = post
             new_comment.save()
+            messages.success(request,('Added comment successfully'))
+            return redirect('post',pk=post.id)
     else:
         form = CommentForm()
     context = {'articles':post,

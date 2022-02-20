@@ -44,7 +44,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=50) 
     email = models.EmailField()
     content = models.TextField()
-    avatar = models.ImageField(default='default.svg', upload_to='images')
+    user_img = models.ImageField(upload_to='images', default='default.jpg')
     created_on = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
