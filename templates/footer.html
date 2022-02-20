@@ -23,7 +23,9 @@
           <li><a href="{% url 'blog' %}">Blog</a></li>
 
           <li><a href="{% url 'about' %}">About</a></li>
+          {% if request.user.is_authenticated %}
           <li><a href="{% url 'news_letter' %}">Newsletter</a></li>
+          {% endif %}
         </ul>
       </div>
       <hr />
