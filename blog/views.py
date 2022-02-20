@@ -42,7 +42,8 @@ def search(request):
             Q(short_intro__icontains=query)|
             Q(country__name__icontains=query)
             ).distinct()
- 
+    if query == None:
+        query= ''
     context = {'articles':articles,'q':query}
     return render(request,'blog/search.html',context)
 
