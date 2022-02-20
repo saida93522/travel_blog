@@ -49,14 +49,16 @@
                    <h6>Follow Me</h6>
                     <div class="media-box pt-4">
                       <ul class="list-inline social-menu">
+                        {% for link in author %}
                         <li class="list-inline-item">
-                          <a href="{{author.twitter}}" target="_blank" class="social-link"
+                          <a href="{{link.twitter}}" target="_blank" class="social-link"
                             ><i class="fab fa-twitter"></i
                           ></a>
                         </li>
+
                         <li class="list-inline-item">
                           <a
-                            href="{{author.instagram}}"
+                            href="{{link.instagram}}"
                             target="_blank"
                             class="social-link"
                             ><i class="fab fa-instagram"></i
@@ -64,10 +66,11 @@
                         </li>
 
                         <li class="list-inline-item">
-                          <a href="{{author.tiktok}}" target="_blank" class="social-link"
+                          <a href="{{link.tiktok}}" target="_blank" class="social-link"
                             ><i class="fab fa-tiktok"></i
                           ></a>
                         </li>
+                        {% endfor %}
                       </ul>
                     </div>
                 </div>
