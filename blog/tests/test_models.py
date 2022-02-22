@@ -24,3 +24,8 @@ class TestAuthor(TestCase):
     def test_str_representation(self):
          """Test author model returns string representation"""
         self.assertEqual(self.author1.__str__(), self.author1.author.username)
+
+
+
+class TestPostModel(TestCase):
+    pass
