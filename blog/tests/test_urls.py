@@ -6,7 +6,7 @@ from .. import models
 from .. import views
 
 class TestURLS(TestCase):
-    def test_home_urls_resolves(self):
+    def test_home_url_resolves(self):
         """ Test url resolves and returns blog url. """
         
         url = reverse('home')
@@ -14,7 +14,7 @@ class TestURLS(TestCase):
         self.assertEqual(response, views.home)
 
 
-    def test_blog_urls_resolves(self):
+    def test_blog_url_resolves(self):
         """ Test url resolves and returns blog url. """
 
         url = reverse('blog')
@@ -22,7 +22,7 @@ class TestURLS(TestCase):
         self.assertEqual(response, views.blog)
         self.assertNotEqual(response, views.home)
 
-    def test_post_urls_resolves(self):
+    def test_post_url_resolves(self):
         """ Test url resolves and returns post url. """
 
         # set url to resolve of post,id
@@ -38,7 +38,7 @@ class TestURLS(TestCase):
         self.assertNotEqual([resolve(url).kwargs,resolve(url2).kwargs], views.post)
 
 
-    def test_create_post_urls_resolves(self):
+    def test_create_post_url_resolves(self):
         """ Test url resolves and returns create_post url. """
         
         url = reverse('create_post')
@@ -46,7 +46,7 @@ class TestURLS(TestCase):
         self.assertEqual(response, views.create_post)
         self.assertNotEqual(response, views.update_post)
         
-    def test_update_post_urls_resolves(self):
+    def test_update_post_url_resolves(self):
         """ Test url resolves and returns update_post url. """
 
         url = reverse('update_post', kwargs={'pk':'ad45g39f'})
@@ -68,3 +68,20 @@ class TestURLS(TestCase):
         response = resolve(url).func
         self.assertEqual(response, views.delete_post)
         self.assertNotEqual(response, views.update_post)
+
+    def test_about_url_resolves(self):
+        """ Test url resolves and returns about url. """
+        url = reverse('about')
+        response = resolve(url).func
+        self.assertEqual(response, views.about)
+        self.assertNotEqual(response, views.home)
+        self.assertNotEqual(response, views.blog)
+
+
+    def test_newsletter_url_resolves(self):
+        """ Test url resolves and returns newsletter url. """
+        pass
+
+    def test_search_url_resolves(self):
+        """ Test url resolves and returns search url. """
+        pass
