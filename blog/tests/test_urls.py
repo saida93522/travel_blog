@@ -80,7 +80,12 @@ class TestURLS(TestCase):
 
     def test_newsletter_url_resolves(self):
         """ Test url resolves and returns newsletter url. """
-        pass
+        url = reverse('news_letter')
+        response = resolve(url).func
+        self.assertEqual(response,views.news_letter)
+        self.assertNotEqual(response,views.search)
+        self.assertNotEqual(response,views.home)
+        self.assertNotEqual(response,views.blog)
 
     def test_search_url_resolves(self):
         """ Test url resolves and returns search url. """
