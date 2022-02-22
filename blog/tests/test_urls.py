@@ -89,4 +89,8 @@ class TestURLS(TestCase):
 
     def test_search_url_resolves(self):
         """ Test url resolves and returns search url. """
-        pass
+        url = reverse('search')
+        response = resolve(url).func
+        self.assertEqual(response,views.search)
+        self.assertNotEqual(response,views.blog)
+        self.assertNotEqual(response,views.post)
