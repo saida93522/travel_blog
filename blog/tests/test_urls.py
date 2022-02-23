@@ -10,7 +10,7 @@ class TestURLS(TestCase):
         url = reverse('home')
         response = resolve(url).func
         self.assertEqual(response, views.home)
-
+        self.assertEqual(resolve('/').func, views.home)
     def test_blog_url_resolves(self):
         """ Test url resolves and returns blog url. """
         

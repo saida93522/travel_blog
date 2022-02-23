@@ -1,0 +1,13 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "bob",
+      "first_name": "bob",
+      "last_name": "bobby",
+      "email": "bobbtw@bob.com",
+      "password": "travel_blogger22å3"
+    }
+  }
+]
