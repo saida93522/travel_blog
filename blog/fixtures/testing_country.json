@@ -1,9 +1,0 @@
-[
-  {
-    "model": "blog.country",
-    "pk": "1",
-    "fields": {
-      "name": "japan"
-    }
-  }
-]
