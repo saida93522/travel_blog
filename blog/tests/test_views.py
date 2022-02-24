@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 # from blog.models import Author, Post, Country, Comment
 
 from .. import models
+from newsletter.models import Subscribers, NewsLetter
 class TestHomeViews(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
@@ -118,3 +119,15 @@ class TestHomeViews(TestCase):
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response, 'blog/home.html')
         self.assertContains(response,'No articles published yet!')
+
+    def test_user_can_subscribe(self):
+        url = reverse('home')
+        data = {
+            'email':'mandy123@mandy.com'
+            }
+        post_response = self.client.post((url),data,follow=True)
+        #check response 200 and correct template is used
+        self.assertEqual(post_response.status_code,200)
+        self.assertEqual(Subscribers.objects.count(),1)
+        self.assertRedirects(post_response,'/')
+     
