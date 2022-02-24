@@ -39,6 +39,8 @@
               <i class="far fa-comment"></i> {{post.comments.count}}
             </div>
           </div>
+          {% empty %}
+          <h5 class="text-center">No articles published yet!</h5>
         </div>
       </div>
       {% endfor %}

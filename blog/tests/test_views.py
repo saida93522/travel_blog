@@ -111,4 +111,10 @@ class TestHomeViews(TestCase):
         self.assertContains(response, self.post3.title)
         self.assertContains(response, post4.title)
 
-        
+    def test_with_no_post(self):
+        url = reverse('home')
+        post = models.Post.objects.all().delete()
+        response = self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response, 'blog/home.html')
+        self.assertContains(response,'No articles published yet!')
