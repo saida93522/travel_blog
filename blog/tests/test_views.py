@@ -9,8 +9,12 @@ from django.contrib.auth.models import User
 
 from .. import models
 from newsletter.models import Subscribers, NewsLetter
-class TestHomeViews(TestCase):
+
+class BlogDataTestCase(TestCase):
+    """predefine data for blog content."""
+    
     def setUp(self):
+        
         self.user = User.objects.create_superuser(
             username='bob', 
             email='bob@bobby.com',
@@ -30,7 +34,7 @@ class TestHomeViews(TestCase):
             title="3 things to do in Japan",
             short_intro=' Japan! The land of sushi, the Tori and the sumo wrestling!',
             created_at='2022-02-18T15:37:32.245078Z',
-            is_featured=True,
+            is_featured=False,
             )
         self.country1 = models.Country.objects.create(name='Japan')
         self.post1.country.set([self.country1.pk])        
@@ -40,7 +44,7 @@ class TestHomeViews(TestCase):
             title="3 things to do in Japan",
             short_intro=' Japan! The land of sushi, the Tori and the sumo wrestling!',
             created_at='2022-02-18T15:37:32.245078Z',
-            is_featured=True,
+            is_featured=False,
             )
         self.country2 = models.Country.objects.create(name='Austria')
         self.post2.country.set([self.country2.pk])
@@ -56,7 +60,11 @@ class TestHomeViews(TestCase):
         self.post1.save()
         self.post2.save()
         self.post3.save()
-        
+
+class TestHomeViews(BlogDataTestCase):
+    def setUp(self):
+        # inherit blogdata class data content
+        super().setUp()        
     def test_hero_quote_shown_home_page(self):
         " test hopepage hero section shows quotes "
         url = reverse('home')
@@ -126,8 +134,30 @@ class TestHomeViews(TestCase):
             'email':'mandy123@mandy.com'
             }
         post_response = self.client.post((url),data,follow=True)
-        #check response 200 and correct template is used
         self.assertEqual(post_response.status_code,200)
+        self.assertNotEqual(post_response.status_code,404)
         self.assertEqual(Subscribers.objects.count(),1)
         self.assertRedirects(post_response,'/')
-     
+        self.assertContains(post_response, 'email')
+
+
+class TestBlogViews(BlogDataTestCase):
+    def setUp(self):
+        # call parent class 'setUp' for data content
+        super().setUp()
+
+    def test_resolves_correct_page(self):
+        url = reverse('blog')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response, 'BLOG')
+        self.assertContains(response, 'Featured Post')
+
+        self.assertTemplateUsed(response, 'blog/blog.html')
+        self.assertTemplateUsed(response, 'blog/sidebar.html')
+        self.assertTemplateUsed(response, 'blog/banner.html')
+
+        
+
+    def test_all_post_displayed(self):
+      pass
