@@ -204,5 +204,29 @@ class TestBlogViews(BlogDataTestCase):
         # Check if page out of range, returns last page result
         self.assertEqual(response_page2.context['articles'].number, 1)
         
+class TestPostDetail(BlogDataTestCase):
+    def setUp(self):
+        super().setUp()
+
+    def test_post_exist(self):
+        response = self.client.get(reverse('post', kwargs={'pk':self.post1.id}))
+        data_rendered = response.context['articles']
+        # check returns ok status code
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
+        # check correct template was used
+        self.assertTemplateUsed(response, 'blog/post-detail.html')
+        # check same data sent to template
+        self.assertEqual(data_rendered, self.post1)
+        self.assertEqual(data_rendered.title,'3 things to do in Japan')
+        self.assertEqual(data_rendered.short_intro,self.post1.short_intro)
+        self.assertEqual(data_rendered.created_at,self.post1.created_at)
+
+        #check correct data shown on page
+        self.assertContains(response,'Japan')
+        self.assertContains(response,'3 things to do in Japan')
+        
+
+  
         
         
