@@ -276,7 +276,12 @@ class TestPostDetail(BlogDataTestCase):
         # check current blog post
         self.assertEqual(models.Post.objects.count(),4)
         
-        
+    def test_create_post_invalid(self):
+        self.client.login(username='bob',password='admin')
+        data = {'title':'test post title'}
+        post_response = self.client.post(reverse('create_post'),data=data,follow=True)
+        self.assertEqual(post_response.status_code,200)
+        self.assertFormError(post_response,"form","short_intro","This field is required.")
        
 
         
