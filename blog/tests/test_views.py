@@ -235,7 +235,6 @@ class TestPostDetail(BlogDataTestCase):
             }
         url = reverse('post',kwargs={'pk':self.post2.pk})
        
-        # self.assertEqual(response.status_code, 200)
         post_response = self.client.post((url),data,follow=True)
 
         data_rendered = post_response.context['form']
@@ -251,6 +250,34 @@ class TestPostDetail(BlogDataTestCase):
 
         self.assertTemplateUsed(post_response, 'blog/post-detail.html')
         
+    def test_create_post_valid(self):
+        self.client.login(username='bob',password='admin')
+        response = self.client.get(reverse('create_post'))
+        self.assertEqual(response.status_code,200)
+        self.assertNotEqual(response.status_code,302)
+        self.assertNotEqual(response.status_code,404)
+        self.assertTemplateUsed(response, 'blog/create_post.html')
+
+        # check current blog post
+        self.assertEqual(models.Post.objects.count(),3)
+
+        # create new blog post
+        new_post = {'title':'test text',
+                    'short_intro':'short intro text',
+                    'body':'content',
+                    
+                    }
+        new_post['owner'] = self.author1.id
+        new_post['country'] = self.country3.id
+        post_response = self.client.post(reverse('create_post'),data=new_post,follow=True)
+        self.assertEqual(post_response.status_code,200)
+        self.assertTemplateUsed(post_response, 'blog/post-detail.html')
         
+        # check current blog post
+        self.assertEqual(models.Post.objects.count(),4)
+        
+        
+       
+
         
         
