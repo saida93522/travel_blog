@@ -5,7 +5,6 @@ from django.test import TestCase , Client
 from django.urls import reverse
 from django.http import response
 from django.contrib.auth.models import User
-# from blog.models import Author, Post, Country, Comment
 
 from .. import models
 from newsletter.models import Subscribers, NewsLetter
@@ -65,6 +64,7 @@ class TestHomeViews(BlogDataTestCase):
     def setUp(self):
         # inherit blogdata class data content
         super().setUp()        
+
     def test_hero_quote_shown_home_page(self):
         " test hopepage hero section shows quotes "
         url = reverse('home')
@@ -97,7 +97,6 @@ class TestHomeViews(BlogDataTestCase):
         self.assertEqual(post.count(), 3)
         self.assertTemplateUsed(response, 'blog/home.html')
         self.assertContains(response, self.post1.title)
-
         
     def test_three_latest_post_is_displayed(self):
         url = reverse('home')
@@ -140,7 +139,6 @@ class TestHomeViews(BlogDataTestCase):
         self.assertRedirects(post_response,'/')
         self.assertContains(post_response, 'email')
 
-
 class TestBlogViews(BlogDataTestCase):
     def setUp(self):
         # call parent class 'setUp' for data content
@@ -157,7 +155,54 @@ class TestBlogViews(BlogDataTestCase):
         self.assertTemplateUsed(response, 'blog/sidebar.html')
         self.assertTemplateUsed(response, 'blog/banner.html')
 
-        
+    def test_all_blog_page_displays_posts(self):
+        url = reverse('blog')
+        response = self.client.get(url)
+        posts = models.Post.objects.prefetch_related('country').order_by('-created_at')
+       
+        self.assertEqual(response.status_code,200)
+        self.assertNotEqual(response.status_code,404)
 
-    def test_all_post_displayed(self):
-      pass
+        self.assertEqual(posts.count(),3)
+        self.assertTemplateUsed('blog/blog.html')
+        self.assertContains(response, self.post1.title)
+
+    def test_featured_blog_post_displayed(self):
+        response = self.client.get(reverse('blog'))
+        self.assertEqual(response.status_code,200)
+        
+        self.assertEqual(response.context['featured'].count(),1 )
+        self.assertTrue(response.context['featured'])
+        self.assertContains(response,'Featured Post')
+        self.assertNotEqual(response.context['featured'],False)
+        self.assertNotEqual(response.context['featured'], self.post2.is_featured)
+
+        self.assertTemplateUsed(response, 'blog/blog.html')
+
+    def test_blog_post_pagination(self):
+        response = self.client.get(reverse('blog'))
+        self.assertIn('query_page', response.context)
+        self.assertIn('articles', response.context)
+        self.assertEqual(response.context['query_page'].count('page'), 1)
+        # create 10 blog post + 3 inherited from parent
+        for i in range(10):
+            models.Post.objects.create(
+                owner=self.author1,
+                title="3 things to do in Japan",
+                short_intro=' Japan! The land of sushi, the Tori and the sumo wrestling!',
+                created_at='2022-02-18T15:37:32.245078Z',
+                is_featured=False,)
+
+        #access first query page 
+        response_page1 = self.client.get(reverse("blog"), {'query_page':1})
+        self.assertEqual(response_page1.status_code, 200)
+        self.assertEqual(len(list(response_page1.context['articles'])), 4)
+
+        # access out of range page
+        response_page2 = self.client.get(reverse("blog"), {'query_page':203})
+        self.assertEqual(response_page2.status_code, 200)
+        # Check if page out of range, returns last page result
+        self.assertEqual(response_page2.context['articles'].number, 1)
+        
+        
+        
