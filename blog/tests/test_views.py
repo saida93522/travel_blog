@@ -225,8 +225,32 @@ class TestPostDetail(BlogDataTestCase):
         #check correct data shown on page
         self.assertContains(response,'Japan')
         self.assertContains(response,'3 things to do in Japan')
-        
+        self.assertIn(self.post1.title, data_rendered.title)
 
-  
+    def test_comments(self):
+        data = {
+            'name':'sam',
+            'email':'samtest@sam',
+            'content':'Austria is beautiful.',
+            }
+        url = reverse('post',kwargs={'pk':self.post2.pk})
+       
+        # self.assertEqual(response.status_code, 200)
+        post_response = self.client.post((url),data,follow=True)
+
+        data_rendered = post_response.context['form']
+        self.assertEqual(post_response.status_code,200)
+        
+        response = self.client.get(reverse('post',kwargs={'pk':self.post3.pk}))
+        self.assertNotEqual(post_response.context['form'],response.context['form'])
+
+        self.assertContains(post_response, 'sam')
+        self.assertContains(post_response, 'email')
+        self.assertContains(post_response, data['name'])
+        self.assertContains(post_response, 'Austria is beautiful.')
+
+        self.assertTemplateUsed(post_response, 'blog/post-detail.html')
+        
+        
         
         
