@@ -9,6 +9,9 @@ from django.contrib.auth.models import User
 from .. import models
 from newsletter.models import Subscribers, NewsLetter
 
+from django.contrib.staticfiles import finders
+from django.contrib.staticfiles.storage import staticfiles_storage
+
 class BlogDataTestCase(TestCase):
     """predefine data for blog content."""
     
@@ -282,7 +285,20 @@ class TestPostDetail(BlogDataTestCase):
         post_response = self.client.post(reverse('create_post'),data=data,follow=True)
         self.assertEqual(post_response.status_code,200)
         self.assertFormError(post_response,"form","short_intro","This field is required.")
-       
 
+    def test_create_post_link_displayed_for_admin_only(self):
+       
+        response = self.client.get(reverse('home'))
+        self.assertNotContains(response,'Create')
+        self.assertTemplateNotUsed(response,'blog/create_post.html')
+  
+
+        self.client.login(username='bob',password='admin')
+        home_response = self.client.get(reverse('home'))
+        create_response = self.client.get(reverse('create_post'))
+        
+        self.assertContains(home_response,'Create')
+        self.assertTemplateUsed(home_response,'blog/home.html')
+        self.assertTemplateUsed(create_response,'blog/create_post.html')
         
         
