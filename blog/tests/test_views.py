@@ -307,5 +307,25 @@ class TestPostDetail(BlogDataTestCase):
         self.assertEqual(response.status_code,200)
         self.assertContains(response,'test update post')
         self.assertTemplateUsed(response,'blog/update_post.html')
-        
+
+
+    def test_delete_post(self):
+        self.client.login(username='bob',password='admin')
+
+        response = self.client.post(reverse('delete_post',kwargs={'pk':self.post2.pk}),follow=True)
+        post = models.Post.objects.filter(pk=self.post2.pk).first()
+
+        self.assertEqual(response.status_code,200)
+        self.assertIsNone(post)
+        self.assertTemplateUsed(response,'blog/blog.html')
+
+    def test_delete_post_not_auth_for_unknown_user(self):
+        response = self.client.post(reverse('delete_post',kwargs={'pk':self.post1.pk}),follow=True)
+
+        post = models.Post.objects.filter(pk=self.post1.pk).first()
+        self.assertEqual(response.status_code,200)
+        #check post for delete is not displayed. no object to delete because not authorized.
+        self.assertIsNone(post)
+        self.assertNotContains(response,'Delete')
+        self.assertTemplateNotUsed(response,'blog/update_post.html')
         
