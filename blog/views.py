@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
-from django.core.exceptions import *
 
-from django.template.loader import render_to_string, get_template
-from django.core.mail import send_mail
-
-
-from newsletter.models import Subscribers, NewsLetter
-from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
-from .utils import get_country, subscribe, get_pagination
-
-from .models import Author, Country, Post, Comment
 from django.db.models import Q
 import re
+
+from django.core.exceptions import *
+from django.core.mail import send_mail
+
+from newsletter.models import Subscribers, NewsLetter
+from .models import Author, Country, Post, Comment
+from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
+
+from .utils import get_country, subscribe, get_pagination
+
+
 
 def home(request):
     intro = Author.objects.all()
