@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-
+import re
 from django.test import TestCase , Client
 from django.urls import reverse
 from django.http import response
@@ -331,6 +331,17 @@ class TestPostDetailViews(BlogDataTestCase):
         self.assertNotContains(response,'Delete')
         self.assertTemplateNotUsed(response,'blog/update_post.html')
 
+class TestSearchViews(BlogDataTestCase):
+    def setUp(self):
+        super().setUp()
+
+    def test_query_search_displays_all_posts(self):
+        response = self.client.get(reverse('search'))
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(len(response.context['articles']),3)
+
+
+        
 class TestNewsLetterView(BlogDataTestCase):
     def setUp(self):
         super().setUp()
