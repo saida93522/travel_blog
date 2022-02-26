@@ -5,6 +5,8 @@ from django.test import TestCase , Client
 from django.urls import reverse
 from django.http import response
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+from django.core import mail
 
 from .. import models
 from newsletter.models import Subscribers, NewsLetter
@@ -61,6 +63,7 @@ class BlogDataTestCase(TestCase):
         self.post3.save()
 
 class TestHomeViews(BlogDataTestCase):
+    
     def setUp(self):
         # inherit blogdata class data content
         super().setUp()        
@@ -204,7 +207,7 @@ class TestBlogViews(BlogDataTestCase):
         # Check if page out of range, returns last page result
         self.assertEqual(response_page2.context['articles'].number, 1)
         
-class TestPostDetail(BlogDataTestCase):
+class TestPostDetailViews(BlogDataTestCase):
     def setUp(self):
         super().setUp()
 
@@ -308,7 +311,6 @@ class TestPostDetail(BlogDataTestCase):
         self.assertContains(response,'test update post')
         self.assertTemplateUsed(response,'blog/update_post.html')
 
-
     def test_delete_post(self):
         self.client.login(username='bob',password='admin')
 
@@ -328,4 +330,40 @@ class TestPostDetail(BlogDataTestCase):
         self.assertIsNone(post)
         self.assertNotContains(response,'Delete')
         self.assertTemplateNotUsed(response,'blog/update_post.html')
+
+class TestNewsLetterView(BlogDataTestCase):
+    def setUp(self):
+        super().setUp()
+        
+        self.email1 = Subscribers.objects.create(email='email1@testmail.com')
+        self.email2 = Subscribers.objects.create(email='email2@testmail.com')
+        self.email3 = Subscribers.objects.create(email='email3@testmail.com')
+
+    def test_send_mail(self):
+        self.client.login(username=self.user.username,password=self.user.password)
+        response = self.client.get(reverse('news_letter'), follow=True)        
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,'title')
+        self.assertContains(response,'message')
+
+        emails = Subscribers.objects.all()
+        subject = NewsLetter.objects.create(title='Test-title')
+        msg = NewsLetter.objects.create(message='Test')
+        data={'title':subject}
+        
+        mail_list = [m for m in emails]
+    
+        mail.send_mail(
+            subject,
+            'hello',
+            'from@example.com',
+            mail_list,
+            fail_silently=False,
+            )
+        response2 = self.client.post(reverse('news_letter'),data=data,follow=True)
+        self.assertEqual(response2.status_code,200)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject, subject)
+        self.assertIn(self.email2,mail.outbox[0].to)
+        self.assertContains(response2,'Test-title')
         

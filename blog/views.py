@@ -15,8 +15,6 @@ from .utils import get_country, subscribe,get_pagination
 from .models import Author, Country, Post, Comment
 import re
 
-
-
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
@@ -46,8 +44,6 @@ def search(request):
         query= ''
     context = {'articles':articles,'q':query}
     return render(request,'blog/search.html',context)
-
-
 
 def blog(request):
     articles = Post.objects.prefetch_related('country').order_by('-created_at')
@@ -91,8 +87,6 @@ def post(request,pk):
                'comments':comments}
     return render(request,'blog/post-detail.html',context)
 
-
-# CRUD
 def create_post(request):
     owner = request.user.author
     form = PostForm(request.POST or None, request.FILES or None)
