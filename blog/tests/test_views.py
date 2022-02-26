@@ -9,9 +9,6 @@ from django.contrib.auth.models import User
 from .. import models
 from newsletter.models import Subscribers, NewsLetter
 
-from django.contrib.staticfiles import finders
-from django.contrib.staticfiles.storage import staticfiles_storage
-
 class BlogDataTestCase(TestCase):
     """predefine data for blog content."""
     
@@ -300,5 +297,15 @@ class TestPostDetail(BlogDataTestCase):
         self.assertContains(home_response,'Create')
         self.assertTemplateUsed(home_response,'blog/home.html')
         self.assertTemplateUsed(create_response,'blog/create_post.html')
+
+    def test_update_post(self):
+        self.client.login(username='bob',password='admin')
+        data = {
+            'short_intro':'test update post'
+            }
+        response = self.client.post(reverse('update_post',kwargs={'pk':self.post2.pk}),data=data,follow=True)
+        self.assertEqual(response.status_code,200)
+        self.assertContains(response,'test update post')
+        self.assertTemplateUsed(response,'blog/update_post.html')
         
         
