@@ -2,13 +2,11 @@ from django import forms
 from tinymce.widgets import TinyMCE
 
 from newsletter.models import Subscribers, NewsLetter
-from .models import Post,Comment,Author
-
+from .models import Post, Comment, Author
 
 class TinyMCEWidget(TinyMCE):
 	def use_required_attribute(self, *args):
 		return False
-
 
 class PostForm(forms.ModelForm):
 	body = forms.CharField(

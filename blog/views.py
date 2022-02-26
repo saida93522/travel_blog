@@ -5,12 +5,10 @@ from django.core.exceptions import *
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
 from django.conf import settings
-from django.db.models import Q
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from newsletter.models import Subscribers, NewsLetter
 from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
-from .utils import get_country, subscribe,get_pagination
+from .utils import get_country, subscribe, get_pagination
 
 from .models import Author, Country, Post, Comment
 import re
