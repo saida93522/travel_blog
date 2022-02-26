@@ -29,7 +29,6 @@ class BlogDataTestCase(TestCase):
             tiktok='https://tiktok.com',
             philo='my travel philosophy..')
         
-         
         self.post1 = models.Post.objects.create(
             owner=self.author1,
             title="3 things to do in Japan",
@@ -348,8 +347,7 @@ class TestSearchViews(BlogDataTestCase):
         self.assertContains(response,'Aus')        
         self.assertContains(response,'aust')        
         self.assertContains(response,'aus')        
-               
-        
+                   
 class TestNewsLetterView(BlogDataTestCase):
     def setUp(self):
         super().setUp()

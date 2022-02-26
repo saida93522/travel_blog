@@ -4,7 +4,7 @@ from django.core.exceptions import *
 
 from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
-from django.conf import settings
+
 
 from newsletter.models import Subscribers, NewsLetter
 from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
@@ -79,7 +79,6 @@ def post(request,pk):
     else:
         form = CommentForm()
     context = {'articles':post,
-             
                'country_count':country_count, 
                'form':form, 
                'new_comment':new_comment,

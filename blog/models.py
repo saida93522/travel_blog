@@ -17,7 +17,7 @@ class Author(models.Model):
         return self.author.username
 
 class Country(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200,unique=True)
     # id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
     def __str__(self):
