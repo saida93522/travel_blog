@@ -19,7 +19,6 @@ class TestBlogModel(BlogDataTestCase):
         self.assertIsInstance(self.country1, models.Country)
         self.assertIsInstance(self.post2, models.Post)
         
-
     def test_str_representation(self):
         """Test author model returns string representation"""
         self.assertEqual(self.author1.__str__(), self.author1.author.username)

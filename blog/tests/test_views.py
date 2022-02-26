@@ -37,25 +37,25 @@ class BlogDataTestCase(TestCase):
             created_at='2022-02-18T15:37:32.245078Z',
             is_featured=False,
             )
-        self.country1 = models.Country.objects.create(name='Japan')
+        self.country1 = models.Country.objects.create(name='japan')
         self.post1.country.set([self.country1.pk])        
         
         self.post2 = models.Post.objects.create(
             owner=self.author1,
-            title="3 things to do in Japan",
-            short_intro=' Japan! The land of sushi, the Tori and the sumo wrestling!',
+            title="3 things to do in Austria",
+            short_intro=' Austria! The land of music, the alps and castles!',
             created_at='2022-02-18T15:37:32.245078Z',
             is_featured=False,
             )
-        self.country2 = models.Country.objects.create(name='Austria')
+        self.country2 = models.Country.objects.create(name='austria')
         self.post2.country.set([self.country2.pk])
         
         self.post3 = models.Post.objects.create(owner=self.author1,
-            title="3 things to do in Japan",
-            short_intro=' Japan! The land of sushi, the Tori and the sumo wrestling!',
+            title="3 things to do in Spain",
+            short_intro=' Spain! The land of arts, monuments!',
             created_at='2022-02-18T15:37:32.245078Z',
             is_featured=True,)
-        self.country3 = models.Country.objects.create(name='Spain')
+        self.country3 = models.Country.objects.create(name='spain')
         self.post3.country.set([self.country3.pk])
         
         self.post1.save()
@@ -335,12 +335,20 @@ class TestSearchViews(BlogDataTestCase):
     def setUp(self):
         super().setUp()
 
-    def test_query_search_displays_all_posts(self):
+    def test_search_displays_all_posts(self):
         response = self.client.get(reverse('search'))
         self.assertEqual(response.status_code,200)
         self.assertEqual(len(response.context['articles']),3)
 
-
+    def test_search_displays_partial_posts(self):
+        response = self.client.get(reverse('search'),data={'q':'aust'})
+        self.assertEqual(response.status_code,200)
+        # print(len(response.context['articles']))
+        self.assertEqual(len(response.context['articles']),1)        
+        self.assertContains(response,'Aus')        
+        self.assertContains(response,'aust')        
+        self.assertContains(response,'aus')        
+               
         
 class TestNewsLetterView(BlogDataTestCase):
     def setUp(self):

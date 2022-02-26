@@ -11,6 +11,7 @@ from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country, subscribe, get_pagination
 
 from .models import Author, Country, Post, Comment
+from django.db.models import Q
 import re
 
 def home(request):
