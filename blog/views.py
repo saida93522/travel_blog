@@ -14,7 +14,6 @@ from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 from .utils import get_country, subscribe, get_pagination
 
 
-
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
