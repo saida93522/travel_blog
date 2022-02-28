@@ -1,89 +1,113 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
-          <!-- ======= Hero Content Starts ======= -->
-    <section id="hero" class="hero-container about">
-      <div class="hero-overlay"></div>
-      <img src="{% static 'images/person-walking.jpg'%}" class="about-header"></img>
-      <!-- text content starts -->
-      <div class="hero-text-container">
-        <p class="fw-lighter blockquotes ">
-          <span>
-            ABOUT</span
+<!-- ======= Hero Content Starts ======= -->
+<section id="hero" class="hero-container about">
+  <div class="hero-overlay"></div>
+  <img src="{% static 'images/person-walking.jpg'%}" class="about-header" />
+
+  <!-- text content starts -->
+  <div class="hero-text-container">
+    <p class="fw-lighter blockquotes">
+      <span> ABOUT</span>
+    </p>
+    <a href="#main-content" class="btn-hero-arrow scrollto">
+      <!-- <i class='bx bxs-chevrons-down bx-fade-up' style='color:#ffffff' ></i> -->
+      <i class="bi bi-arrow-down-short"></i>
+    </a>
+  </div>
+  <!-- text content ends -->
+</section>
+<main id="main-content">
+  <section class="">
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-lg-8">
+          <header
+            class="banner-heading text-center d-flex flex-column align-items-center"
           >
-        </p>
-        <a href="#main-content" class="btn-hero-arrow scrollto ">
-          <!-- <i class='bx bxs-chevrons-down bx-fade-up' style='color:#ffffff' ></i> -->
-          <i class="bi bi-arrow-down-short"></i>
-          
-        </a>
-      </div>
-      <!-- text content ends -->
-    </section>
-    <main id="main-content">
-      <section class="py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8">
-              <header
-                class="banner-heading text-center d-flex flex-column align-items-center"
+            <!-- Post title-->
+            <h2 class="fw-light">About me</h2>
+            <hr class="hr-blog mt-2 w-100" />
+          </header>
+          <div>
+            <p>
+              My story began in my college dorm room. I was yearning change and
+              adventure after living in the same small town for 17 years. During
+              college, I began working long hours and saving every dime. After a
+              year out of college, I've visited over ten countries.
+            </p>
+
+            <h6>Why do you love to travel?</h6>
+            <p class="mt-2">
+              Traveling is an adventure of the unknown. When you go to another
+              location, you are confronted with all kind of unexpected
+              challenges.
+            </p>
+            <p class="mt-2">
+              That's why I enjoy traveling so much: it challenges me to broaden
+              my horizons and reassess my assumptions. opportunity to learn from
+              those whose life experiences differ from mine As a result,
+              patience, wisdom, perspective, and appreciation have grown in me.
+            </p>
+
+            <h6>Why did you start blogging</h6>
+            <p class="mt-2">
+              I started
+              <a class="fw-bold" href="{% url 'home' %}">TinyWanderlust</a> to
+              share my travel adventures and experiences with you in the hopes
+              of igniting the wanderlust in all of us.
+            </p>
+
+            <div class="pt-4">
+              <a
+                href="{% url 'blog' %}"
+                type="button"
+                class="btn btn-link readmore"
+                >Start Here</a
               >
-                <!-- Post title-->
-                <h2 class="fw-light">About me</h2>
-                <hr class="hr-blog mt-2 w-100" />
-              </header>
-              <article>
-                <p>My story began in my college dorm room. I was yearning change and adventure after living in the same small town for 17 years. During college, I began working long hours and saving every dime. After a year out of college, I've visited over ten countries.</p>
-
-                <h6>Why do you love to travel?</h6>
-                <p class="mt-2">Traveling is an adventure of the unknown. When you go to another location, you are confronted with all kind of unexpected challenges.</p>
-                <p class="mt-2"> 
-                That's why I enjoy traveling so much: it challenges me to broaden my horizons and reassess my assumptions. opportunity to learn from those whose life experiences differ from mine As a result, patience, wisdom, perspective, and appreciation have grown in me.</p>
-
-                <h6>Why did you start blogging</h6>
-                <p class="mt-2"> I started <a class="fw-bold" href="{% url 'home' %}">TinyWanderlust</a> to share my travel adventures and experiences with you in the hopes of igniting the wanderlust in all of us.</p>
-
-                <div class="pt-4">
-                  <a href="{% url 'blog' %}" type="button" class="btn btn-link readmore">Start Here</a>
-                </div>
-                <div class="mt-5">
-                   <!-- icons -->
-                   <h6>Follow Me</h6>
-                    <div class="media-box pt-4">
-                      <ul class="list-inline social-menu">
-                        {% for link in author %}
-                        <li class="list-inline-item">
-                          <a href="{{link.twitter}}" target="_blank" class="social-link"
-                            ><i class="fab fa-twitter"></i
-                          ></a>
-                        </li>
-
-                        <li class="list-inline-item">
-                          <a
-                            href="{{link.instagram}}"
-                            target="_blank"
-                            class="social-link"
-                            ><i class="fab fa-instagram"></i
-                          ></a>
-                        </li>
-
-                        <li class="list-inline-item">
-                          <a href="{{link.tiktok}}" target="_blank" class="social-link"
-                            ><i class="fab fa-tiktok"></i
-                          ></a>
-                        </li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                </div>
-              </article>
             </div>
-               <!-- Side widgets-->
+            <div class="mt-5">
+              <!-- icons -->
+              <h6>Follow Me</h6>
+              <div class="media-box pt-4">
+                <ul class="list-inline social-menu">
+                  {% for link in author %}
+                  <li class="list-inline-item">
+                    <a
+                      href="{{link.twitter}}"
+                      target="_blank"
+                      class="social-link"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </li>
 
-            {% include 'blog/sidebar.html' with articles=articles country_count=country_count  %}
+                  <li class="list-inline-item">
+                    <a
+                      href="{{link.instagram}}"
+                      target="_blank"
+                      class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <a
+                      href="{{link.tiktok}}"
+                      target="_blank"
+                      class="social-link"
+                      ><i class="fab fa-tiktok"></i
+                    ></a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      
-      
-      
-      </section>
-    </main>
+        <!-- Side widgets-->
+        {% include 'blog/sidebar.html' with articles=articles countries=c%}
+        <!-- Side widgets end-->
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock content %}

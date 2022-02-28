@@ -3,8 +3,12 @@
   <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
     <div class="container px-5">
       <a class="navbar-brand align-self-end" href="{% url 'home' %}"
-        ><img src="{% static 'images/logotw.svg' %}" alt=""
-      /></a>
+        ><img class="logo" src="{% static 'images/logotw.svg' %}" alt="" /><img
+          class="logo-small"
+          src="{% static 'images/logo-sm.svg' %}"
+          alt=""
+        />
+      </a>
 
       <button
         class="navbar-toggler navbar-toggler-right"
@@ -43,13 +47,14 @@
           </li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"></li>
-          <li class="nav-item align-self-start">
+          <li role="presentation" class="nav-item align-self-start">
             <a class="nav-link" href="{% url 'search' %}"
               ><i class="bi bi-search"></i
             ></a>
           </li>
+          {% comment %}
           <li class="nav-item" role="presentation"></li>
+          {% endcomment %}
         </ul>
       </div>
     </div>

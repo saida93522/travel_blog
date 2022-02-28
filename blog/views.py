@@ -48,7 +48,7 @@ def blog(request):
     articles = Post.objects.prefetch_related('country').order_by('-created_at')
     paginated_page,query_page =  get_pagination(request,articles)
 
-    country_count = get_country()
+    countries = get_country()
     featured = Post.objects.filter(is_featured=True)
     
     form = subscribe(request)
@@ -58,11 +58,11 @@ def blog(request):
                'articles':paginated_page,
                'query_page':query_page,
                'form':form,
-               'country_count':country_count}
+               'countries':countries}
     return render(request,'blog/blog.html',context)
 
 def post(request,pk):
-    country_count = get_country()
+    countries = get_country()
     post = get_object_or_404(Post, id=pk)
     comments = post.comments.filter(is_active=True)
     new_comment = None
@@ -79,7 +79,7 @@ def post(request,pk):
     else:
         form = CommentForm()
     context = {'articles':post,
-               'country_count':country_count, 
+               'countries':countries, 
                'form':form, 
                'new_comment':new_comment,
                'comments':comments}
@@ -155,6 +155,6 @@ def news_letter(request):
 
 def about(request):
     author = Author.objects.all()
-    country_count = get_country()
-    context={'country_count':country_count, 'author':author}
+    countries = get_country()
+    context={'c':countries, 'author':author}
     return render(request,'blog/about.html',context)
