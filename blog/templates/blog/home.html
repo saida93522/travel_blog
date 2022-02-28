@@ -49,7 +49,7 @@
             <hr class="hr-blog mt-2" />
           </header>
           {% for philo in intro %}
-          <p class="">{{philo.philo}}</p>
+          <p class="">{{philo.philo | linebreaks }}</p>
 
           <div class="philo-title-box text-left mb-3">
             <a href="{% url 'about' %}" type="button" class="btn readmore">
@@ -58,7 +58,7 @@
           </div>
 
           <!-- icons -->
-          <div class="media-box mt-2">
+          <div class="media-box pt-2">
             <ul class="list-inline social-menu">
               <li class="list-inline-item">
                 <a href="{{philo.twitter}}" target="_blank" class="social-link"
