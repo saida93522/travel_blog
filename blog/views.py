@@ -11,13 +11,15 @@ from newsletter.models import Subscribers, NewsLetter
 from .models import Author, Country, Post, Comment
 from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 
-from .utils import get_country, subscribe2, get_pagination
+from .utils import get_country, get_pagination
 
 
 def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
     latest_post = posts.order_by('-created_at')[0:3]
+
+    # model-pop-up subscription
     form = SubscribersForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         # generate form with email data from request
