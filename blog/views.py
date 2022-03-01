@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse,HttpResponse
 from django.contrib import messages
 
 from django.db.models import Q
@@ -20,11 +20,16 @@ def home(request):
     latest_post = posts.order_by('-created_at')[0:3]
     form = SubscribersForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
+        # generate form with email data from request
         form = SubscribersForm(request.POST)
         if form.is_valid():
-            form.save()
+            sub_email = form.save(commit=False)
+            sub_email.save()
             messages.success(request, 'You have successfully signed up for our newsletter.')
             return redirect('/')
+        else:
+            messages.error(request,form.errors['email'])
+            return redirect(reverse('home') + "#subscribe")
     else:
         form = SubscribersForm()
     context = {"latest":latest_post,'intro':intro, 'form':form}
