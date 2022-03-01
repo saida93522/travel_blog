@@ -86,7 +86,7 @@
                   </p>
                   <p></p>
                   <form method="POST" class="py-2" action="{% url 'home' %}">
-                    {% csrf_token %} {{ form |crispy }}
+                    {% csrf_token %} {{ form|crispy }}
                     <!---->
 
                     <button

@@ -3,38 +3,44 @@
 {% block content %}
 
 <!-- Page Content -->
-<section class="subscribe">
+<section id="subscribe" class="subscribe">
+  <div class="col-lg-8 mx-auto">
+    <div>
+      {% for msg in messages %}
+      <div class="alert alert-warning">{{msg}}</div>
 
-<div class="col-lg-8 mx-auto">
-  <header>
-    <h6 class="text-center h4 fw-bold">Subscribe</h6>
-  </header>
-  <div class="card bg-dark text-center p-3 border-0">
-    <div class="card-body">
-      <h6 class="card-text p">
-        Subscribe to my newsletter and never miss my latest blog post.
-      </h6>
-      <div class="">
-        {% if form != none %}
-        <form method="POST" class="form-card row mt-3 g-2 align-items-center">
-          {% csrf_token %}
-          <div class="form-group">
-            <h6 class="fw-bold label rounded p-2" for="">{{form.as_p}}</label>
-          </div>
-          <div class="form-group">
-            <input
-              class="btn mt-2 btn-l btn-dark readmore"
-              type="submit"
-              name="submit"
-              value="Subscribe Now"
-            />
-          </div>
-        </form>
-        {% endif %}
+      {% endfor %}
+    </div>
+    <header>
+      <h6 class="text-center h4 fw-bold">Subscribe</h6>
+    </header>
+    <div class="card bg-dark text-center p-3 border-0">
+      <div class="card-body">
+        <h6 class="card-text p">
+          Subscribe to my newsletter and never miss my latest blog post.
+        </h6>
+        <div class="">
+          <form
+            method="POST"
+            action=""
+            class="form-card row mt-3 g-2 align-items-center"
+          >
+            {% csrf_token %}
+            <div class="form-group">
+              <h6 class="fw-bold label rounded p-2" for="">{{form.as_p}}</h6>
+            </div>
+            <div class="form-group">
+              <input
+                class="btn mt-2 btn-l btn-dark readmore"
+                type="submit"
+                name="submit"
+                value="Subscribe Now"
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-
-</div>
 </section>
-{% endblock content %} 
+{% endblock content %}

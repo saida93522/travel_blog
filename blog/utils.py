@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.db.models import Count
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -35,9 +36,26 @@ def subscribe(request):
     if request.method == 'POST':
         form = SubscribersForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_sub = form.save(commit=False)
             messages.success(request, 'You have successfully signed up for our newsletter.')
-            return form
+            new_sub.save()
+            return redirect(reverse('blog') + "#subscribe")
+        else:
+            messages.error(request,form.errors['email'])
+            return (reverse('blog') + "#subscribe")
     else:
-        form = SubscribersForm()
+        form = SubscribersForm(request.POST)
     return form
+
+def subscribe2(form):
+    # generate form with email data from request
+    
+    if form.is_valid():
+        sub_email = form.save(commit=False)
+        sub_email.save()
+        messages.success(request, 'You have successfully signed up for our newsletter.')
+        return redirect('blog')
+    else:
+        # redirect to subscribe section and display error message
+        messages.error(request,form.errors['email'])
+    

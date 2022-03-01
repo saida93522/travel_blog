@@ -49,7 +49,7 @@ class SubscribersForm(forms.ModelForm):
     def save(self,commit=True):
         user = super(SubscribersForm,self).save(commit=False)
         user.email = self.cleaned_data['email']
-        validators.validate_email(user.email)
+        # validators.validate_email(user.email)
         if commit:
             user.save()
         return user

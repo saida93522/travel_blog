@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse,HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 
 from django.db.models import Q
@@ -11,7 +11,7 @@ from newsletter.models import Subscribers, NewsLetter
 from .models import Author, Country, Post, Comment
 from .forms import PostForm, SubscribersForm, NewsLetterForm, CommentForm
 
-from .utils import get_country, subscribe, get_pagination
+from .utils import get_country, subscribe2, get_pagination
 
 
 def home(request):
@@ -26,8 +26,9 @@ def home(request):
             sub_email = form.save(commit=False)
             sub_email.save()
             messages.success(request, 'You have successfully signed up for our newsletter.')
-            return redirect('/')
+            return redirect(reverse('home') + "#subscribe")
         else:
+            # redirect to subscribe section and display error message
             messages.error(request,form.errors['email'])
             return redirect(reverse('home') + "#subscribe")
     else:
@@ -56,8 +57,19 @@ def blog(request):
     countries = get_country()
     featured = Post.objects.filter(is_featured=True)
     
-    form = subscribe(request)
-    
+    if request.method == 'POST':
+        form = SubscribersForm(request.POST)
+        if form.is_valid():
+            sub_email = form.save(commit=False)
+            sub_email.save()
+            messages.success(request, 'You have successfully signed up for our newsletter.')
+            return redirect(reverse('blog') + "#subscribe")
+        else:
+            # redirect to subscribe section and display error message
+            messages.error(request,form.errors['email'])
+            return redirect(reverse('blog') + "#subscribe")
+    else:
+        form = SubscribersForm()
         
     context = {'featured':featured,
                'articles':paginated_page,
