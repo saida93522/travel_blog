@@ -23,6 +23,7 @@ body {
   font-family: "IM Fell French Canon", serif;
   font-style: normal;
   overflow-x: hidden;
+
   /* background: #f8f9fa;
   color: #212121; */
   color: #f8f9fa;
@@ -86,6 +87,19 @@ img {
 .navbar a {
   color: #f4f4f4;
 }
+
+.navbar-brand .logo-small {
+  display: none;
+}
+@media (max-width: 600px) {
+  .navbar-brand .logo {
+    display: none;
+  }
+  .navbar-brand .logo-small {
+    display: block;
+  }
+}
+
 .nav-scrolled {
   /* background: #f4f4f4; */
   background: #3d4842;
@@ -93,7 +107,7 @@ img {
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 .nav-scrolled a {
-  color: #000;
+  color: #fff;
 }
 
 .nav-link {
@@ -136,27 +150,7 @@ img {
    Navigation Menu Mobile             
  ***-----------------------------------***/
 /* menu bar/search */
-.icon-bar {
-  background-color: #a5a58d;
-  margin-right: 3px;
-  padding: 2px;
-  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  transition: width ease-in-out 0.3s, top 0.2s ease-in-out 0.2s,
-    bottom 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out;
-  position: relative;
-  color: #fff;
-  border: 0;
-}
-
-.icon-bar1 {
-  top: 0px;
-}
-
-.icon-bar3 {
-  bottom: 0;
-}
-.navbar-toggler {
+.navbar-toggler-right {
   cursor: pointer;
 }
 
@@ -166,6 +160,27 @@ img {
   border-radius: 0;
   outline: 0;
   box-shadow: none;
+}
+.icon-bar {
+  background-color: #f3c962;
+  margin: 2px;
+  padding: 2px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: width ease-in-out 0.3s, top 0.2s ease-in-out 0.2s,
+    bottom 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out;
+  position: relative;
+  color: #fff;
+  border: 0;
+  width: 3px;
+}
+
+.icon-bar1 {
+  top: 0px;
+}
+
+.icon-bar3 {
+  bottom: 0px;
 }
 
 .animate .icon-bar1,
@@ -183,14 +198,6 @@ img {
 .animate .icon-bar1 {
   top: 15px;
   transform: rotate(45deg);
-}
-
-.animate .icon-bar2 {
-  width: 0px;
-}
-
-.animate .icon-bar2 {
-  width: 80px;
 }
 
 .btn-hero-arrow i,
@@ -291,10 +298,7 @@ video {
   color: #fff;
   line-height: 0;
 }
-.back-to-top:hover,
-.btn-hero-arrow:hover {
-  /* background: #a5a58d; */
-}
+
 .back-to-top.active {
   visibility: visible;
   opacity: 1;
@@ -654,6 +658,7 @@ footer a:hover {
 }
 
 /* BLOG TEMPLATE */
+.home-header,
 .blog-header,
 .about-header {
   object-fit: cover;
@@ -709,4 +714,7 @@ footer a:hover {
   max-width: 100%;
   width: 100%;
   height: auto;
+}
+.url-link {
+  color: #a5a58d;
 }
