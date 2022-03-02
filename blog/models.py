@@ -26,7 +26,7 @@ class Country(models.Model):
     
 class Post(models.Model):
     owner = models.ForeignKey(Author, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     short_intro = models.CharField(max_length=300)
     body = HTMLField()
     thumbnail =models.ImageField(upload_to='images',default='yashc.jpg')

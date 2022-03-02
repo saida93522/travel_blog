@@ -138,7 +138,7 @@ class TestHomeViews(BlogDataTestCase):
         self.assertEqual(post_response.status_code,200)
         self.assertNotEqual(post_response.status_code,404)
         self.assertEqual(Subscribers.objects.count(),1)
-        self.assertRedirects(post_response,'/')
+        self.assertRedirects(post_response,'/#subscribe')
         self.assertContains(post_response, 'email')
 
 class TestBlogViews(BlogDataTestCase):
