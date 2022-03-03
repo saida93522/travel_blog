@@ -16,7 +16,7 @@ from .utils import get_country, get_pagination
 
 def home(request):
     intro = Author.objects.all()
-    posts = Post.objects.prefetch_related('country')
+    posts = Post.objects.all()
     latest_post = posts.order_by('-created_at')[0:3]
 
     # model-pop-up subscription

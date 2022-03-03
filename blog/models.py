@@ -17,7 +17,9 @@ class Author(models.Model):
         return self.author.username
 
 class Country(models.Model):
-    name = models.CharField(max_length=200,unique=True)
+    name = models.CharField(max_length=200)
+    # id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
+    
     objects = models.Manager()
     def __str__(self):
         return self.name
@@ -30,7 +32,7 @@ class Post(models.Model):
     body = HTMLField()
     thumbnail =models.ImageField(upload_to='images',default='yashc.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
-    country = models.ManyToManyField(Country)    
+    country = models.ManyToManyField(Country,blank=True)    
     is_featured = models.BooleanField(default=False)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
