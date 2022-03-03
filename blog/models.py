@@ -13,17 +13,15 @@ class Author(models.Model):
     bio = HTMLField()
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
+    
     def __str__(self):
         return self.author.username
 
 class Country(models.Model):
-    name = models.CharField(max_length=200)
-    # id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
-    
+    name = models.CharField(max_length=200, unique=True,null=True, blank=True)   
     objects = models.Manager()
     def __str__(self):
         return self.name
-    
     
 class Post(models.Model):
     owner = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -40,7 +38,6 @@ class Post(models.Model):
     def __str__(self):
         return self.owner.author.username
 
-
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
     name = models.CharField(max_length=50) 
@@ -52,12 +49,8 @@ class Comment(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
 
     class Meta:
-        """ Ensure that a user can only leave one review per post.
-    """
-    
         ordering = ['created_on']
     
-        
     def __str__(self):
         return (f'Comment by {self.name}')
 
