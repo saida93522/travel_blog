@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from tinymce.models import HTMLField
+from django.core.files.storage import default_storage
 
 class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -34,6 +35,20 @@ class Post(models.Model):
     is_featured = models.BooleanField(default=False)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
     objects = models.Manager()
+
+    def save(self, *args, **kwargs):
+        #get reference to previous  thumbnail img
+        old_thumbnail = Post.objects.filter(pk=self.pk).first()
+        if old_thumbnail and old_thumbnail.thumbnail:
+            if old_thumbnail.thumbnail != self.thumbnail:
+                self.delete_thumbnail(old_thumbnail.thumbnail)
+                
+        super().save(*args, **kwargs)
+
+    def delete_thumbnail(self, thumbnail):
+        if default_storage.exists(thumbnail.name):
+            default_storage.delete(thumbnail.name)
+            
    
     def __str__(self):
         return self.owner.author.username

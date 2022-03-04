@@ -27,11 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'a6^78s&i)!()-jpfwu&5s2@p%1uzwoy$_139iq6vdgwto7!=6n'
+
  
 SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tinywanderlust-blog-saida.herokuapp.com','localhost']
 
@@ -142,12 +142,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-
 
 
 # SMTP configuration
@@ -160,7 +157,6 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # custom setting
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS') 
-
 
 
 # Activate Django-Heroku.
