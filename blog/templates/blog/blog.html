@@ -2,7 +2,7 @@
 <!-- ======= Hero Content Starts ======= -->
     <section id="hero" class="hero-container blog">
       <div class="hero-overlay"></div>
-      <img src="{% static 'images/mountain-green.jpg'%}" class="blog-header img-responsive">
+      <img src="{% static 'images/mountain-green.jpg'%}" class="blog-header img-responsive" alt="mountain" loading="lazy">
       <!-- text content starts -->
       <div class="hero-text-container">
         <p class="fw-lighter blockquotes">
@@ -11,9 +11,7 @@
           >
         </p>
         <a href="#main-content" class="btn-hero-arrow scrollto">
-          <!-- <i class='bx bxs-chevrons-down bx-fade-up' style='color:#ffffff' ></i> -->
           <i class="bi bi-arrow-down-short"></i>
-          
         </a>
       </div>
       <!-- text content ends -->
@@ -41,6 +39,7 @@
                   <h6 class="">Featured Post</h6>
                   <hr class="hr-blog mt-2" />
                 </header>
+                {% if featured %}
                 {% for post in featured %}
                
                 <div class="card">
@@ -49,6 +48,7 @@
                     src="{{post.thumbnail.url}}"
                     alt="..."
                     class="thumbnail img-responsive"
+                    loading="lazy"
                    
                     />
                   </a>
@@ -67,6 +67,7 @@
                 </div>
                
                {% endfor %}
+               {% endif %}
               </article>
               <!-- Nested row for non-featured blog posts-->
               <article class="latest mt-4">
@@ -83,6 +84,7 @@
                         <img class="card-img-top img-fluid" 
                         src="{{post.thumbnail.url}}"
                         alt="..."
+                        loading="lazy"
                         />
                       </a>
                       <div class="card-body">

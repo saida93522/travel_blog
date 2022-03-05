@@ -1,5 +1,7 @@
 asgiref==3.4.1
 beautify==0.1.4
+boto3==1.21.12
+botocore==1.24.12
 certifi==2021.10.8
 charset-normalizer==2.0.12
 coverage==6.3.2
@@ -8,14 +10,19 @@ Django==3.2.11
 django-crispy-forms==1.14.0
 django-environ==0.8.1
 django-heroku==0.3.1
+django-storages==1.12.3
 django-tinymce4-lite==1.8.0
 gunicorn==20.1.0
 idna==3.3
+jmespath==0.10.0
 jsmin==3.0.1
 Pillow==9.0.0
 psycopg2==2.9.3
+python-dateutil==2.8.2
 pytz==2021.3
 requests==2.27.1
+s3transfer==0.5.2
+six==1.16.0
 sqlparse==0.4.2
 typing_extensions==4.0.1
 urllib3==1.26.8

@@ -2,9 +2,7 @@
 <!--crispy form -->
 {% load crispy_forms_tags %}
 <section id="hero" class="hero-container blog" class="page-header">
-  <!-- <div class="hero-overlay"></div> -->
-
-  <img src="{{articles.thumbnail.url}}" class="img-responsive w-100 thumbnail" alt="..." />
+  <img src="{{articles.thumbnail.url}}" class="img-responsive w-100 thumbnail" alt="..." loading="lazy" />
 </section>
 <main id="main-content">
   <div class="container p-5">
@@ -21,8 +19,6 @@
     <div class="row">
       <div class="col-lg-8">
         <section>
-          <!-- Post content-->
-
           <!-- Post header-->
           <header
             class="banner-heading text-center d-flex flex-column align-items-center"
@@ -57,11 +53,7 @@
             <div class="post-body">
               <p>{{articles.body|safe}}</p>
             </div>
-
-           
-            
           </article>
-
           <!-- Post Footer -->
           <hr class="hr-blog mt-2 w-100" />
           <!-- User profile -->
@@ -154,7 +146,6 @@
         </section>
       </div>
       <!-- Side widgets-->
-
       {% include 'blog/sidebar.html' with articles=articles %}
       <!--end-row-->
     </div>
