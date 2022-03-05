@@ -132,7 +132,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
 #AWS Credentials
-USE_S3 = env('USE_S3') == 'False'
+USE_S3 = env('USE_S3') == 'TRUE'
 
 if USE_S3:
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
