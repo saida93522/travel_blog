@@ -18,7 +18,7 @@ def home(request):
     intro = Author.objects.all()
     posts = Post.objects.prefetch_related('country')
     latest_post = posts.order_by('-created_at')[0:3]
-
+    
     # model-pop-up subscription
     form = SubscribersForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':

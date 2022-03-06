@@ -14,7 +14,7 @@ class TinyMCEWidget(TinyMCE):
 class PostForm(forms.ModelForm):
 	body = forms.CharField(
 		widget=TinyMCEWidget(
-			attrs={'required': False,'cols': 70, 'rows': 30}
+			attrs={'required': False,'cols': 70, 'rows': 30},
 		)
 	)
 	class Meta:
@@ -34,8 +34,7 @@ class SubscribersForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         error_msg = {'email_exists':'This email already exists'}
-        # if not email:
-        #     raise ValidationError(error_msg['invalid_email'], code='invalid')
+    
         if Subscribers.objects.filter(email__iexact=email).exists():
             raise ValidationError(error_msg['email_exists'], code='exists')
         else:
@@ -49,7 +48,6 @@ class SubscribersForm(forms.ModelForm):
     def save(self,commit=True):
         user = super(SubscribersForm,self).save(commit=False)
         user.email = self.cleaned_data['email']
-        # validators.validate_email(user.email)
         if commit:
             user.save()
         return user

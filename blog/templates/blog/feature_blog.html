@@ -20,7 +20,7 @@
           <div class="card-body">
             <small class="text-muted my-2">
               <i class="far fa-clock fw-bold"></i> {{post.created_at|timesince}}
-              ago {% for place in post.country.name.all %}
+              ago {% for place in post.country.all %}
               <span class="category mx-2"> | {{place}} </span>
               {% endfor %}
             </small>

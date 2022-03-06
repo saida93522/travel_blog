@@ -1,4 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"); */
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -17,20 +16,12 @@ body {
   font-family: "IM Fell French Canon", serif;
   font-style: normal;
   overflow-x: hidden;
-
-  /* background: #f8f9fa;
-  color: #212121; */
   color: #f8f9fa;
   overflow-x: hidden;
   background: #262e2b;
-  /* background-color: #3d4842; */
-  /* color: #c1ae73; */
-  /* color: #f3c962; */
   font-size: calc(0.9em + (26 - 14) * ((100vw - 18.75em) / (1600 - 300)));
 }
-.content-container {
-  background: #f0edeb;
-}
+
 /*---------------------------------------
     Typorgraphy              
 -----------------------------------------*/
@@ -76,7 +67,6 @@ img {
   transition: background 250ms ease-in;
   z-index: 999;
   color: #f4f4f4;
-  /* padding: 1rem; */
 }
 .navbar a {
   color: #f4f4f4;
@@ -95,7 +85,6 @@ img {
 }
 
 .nav-scrolled {
-  /* background: #f4f4f4; */
   background: #3d4842;
   padding: 0.9rem 0 0.2rem 0;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
@@ -237,22 +226,19 @@ video {
   opacity: 1;
   text-align: center;
   color: #f4f4f4;
-  /* color: #a8a6a5; */
-  /* color: #b7b7a4; */
-  /* font-size: clamp(); */
   font-style: oblique;
 }
 
 .overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
 }
 
@@ -325,7 +311,6 @@ aside {
     Philo Section            
  ***-----------------------------------***/
 .philo-sec {
-  /* background: #ebebe7; */
   background: #3d4842;
 }
 
@@ -402,9 +387,6 @@ aside {
   font-size: 0.7em;
   padding-left: 0.3rem;
 }
-.blog-read-btn:hover {
-  /* color: #a5a58d; */
-}
 
 /***----------------------------------***
     Subscription Section            
@@ -452,7 +434,6 @@ aside {
 
 .modal-body {
   border: none;
-  /* background-color: #b7b7a4; */
   background-color: #000000;
 }
 
@@ -492,7 +473,6 @@ aside {
  ***-----------------------------------***/
 
 footer {
-  /* background: #ebebe7; */
   background: #262e2b;
   padding: 0 0 30px 0;
   font-size: 1.3rem;
@@ -503,151 +483,10 @@ footer a {
 footer a:hover {
   color: #f3ca62;
 }
-.footer .footer-newsletter {
-  padding: 50px 0;
-  background: #b7b7a4;
-  border-top: 1px solid #e1ecff;
-}
-.footer .footer-newsletter h4 {
-  font-size: 24px;
-  margin: 0 0 10px 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  color: #f4f4f4;
-}
-.footer .footer-newsletter form {
-  margin-top: 20px;
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 4px;
-  border: 1px solid #e1ecff;
-}
-.footer .footer-newsletter form input[type="email"] {
-  border: 0;
-  padding: 8px;
-  width: calc(100% - 140px);
-}
-.footer .footer-newsletter form input[type="submit"] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 30px;
-  margin: 3px;
-  background: #000;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 4px;
-}
-.footer .footer-newsletter form input[type="submit"]:hover {
-  background: #e38169;
-}
-.footer .footer-top {
-  background-size: cover;
-  background-position: center bottom;
-
-  border-top: 1px solid #f3c962;
-  border-bottom: 1px solid #f3c962;
-  padding: 60px 0 30px 0;
-}
 @media (max-width: 992px) {
-  .footer .footer-top {
+  footer {
     background-position: center bottom;
   }
-}
-.footer .footer-top .footer-info {
-  margin-bottom: 30px;
-}
-.footer .footer-top .footer-info .logo {
-  line-height: 0;
-  margin-bottom: 15px;
-}
-.footer .footer-top .footer-info .logo img {
-  max-height: 40px;
-  margin-right: 6px;
-}
-.footer .footer-top .footer-info .logo span {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  /* color: #6a6963; */
-  color: #f3c962;
-  margin-top: 3px;
-}
-.footer .footer-top .footer-info p {
-  font-size: 14px;
-  line-height: 24px;
-  margin-bottom: 0;
-}
-.footer .footer-top .social-links a {
-  font-size: 20px;
-  display: inline-block;
-  color: #f8f9fa;
-  line-height: 0;
-  margin-right: 10px;
-  transition: 0.3s;
-}
-.footer .footer-top .social-links a:hover {
-  /* color: #e38169; */
-  color: #a76d60;
-}
-.footer .footer-top h4 {
-  font-size: 16px;
-  font-weight: bold;
-  /* color: #6a6963; */
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 12px;
-}
-.footer .footer-top .footer-links {
-  margin-bottom: 30px;
-}
-.footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer .footer-top .footer-links ul i {
-  padding-right: 2px;
-  color: #f3c962;
-  font-size: 12px;
-  line-height: 0;
-}
-.footer .footer-top .footer-links ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-.footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
-.footer .footer-top .footer-links ul a {
-  color: #f8f9fa;
-  transition: 0.3s;
-  display: inline-block;
-  line-height: 1;
-}
-.footer .footer-top .footer-links ul a:hover {
-  color: #f3c962;
-}
-.footer .footer-top .footer-contact p {
-  line-height: 26px;
-}
-.footer .copyright {
-  text-align: center;
-  padding-top: 30px;
-  color: #f3c962;
-}
-.footer .credits {
-  padding-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  color: #f4f4f4;
 }
 
 /* BLOG TEMPLATE */
@@ -700,7 +539,6 @@ footer a:hover {
   opacity: 0.9;
 }
 .delete-model {
-  /* width: 15rem; */
   height: 15rem;
 }
 .page-header .thumbnail {

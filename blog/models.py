@@ -6,7 +6,7 @@ from django.core.files.storage import default_storage
 
 class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(default='avatar.jpg', upload_to='images')
+    avatar = models.ImageField(default='avatar_auth.jpg', upload_to='images')
     twitter = models.CharField(max_length=200,blank=True,null=True)
     instagram = models.CharField(max_length=200,blank=True,null=True)
     tiktok = models.CharField(max_length=200,blank=True,null=True)
