@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
 ALLOWED_HOSTS = ['*']
 
@@ -132,7 +132,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
 #AWS Credentials
-USE_S3 = env('USE_S3') == 'FALSE'
+USE_S3 = env('USE_S3') == 'TRUE'
 
 if USE_S3:
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
