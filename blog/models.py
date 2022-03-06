@@ -6,7 +6,7 @@ from django.core.files.storage import default_storage
 
 class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(default='avatar_auth.jpg', upload_to='images')
+    avatar = models.ImageField(default='images/avatar_auth.jpg', upload_to='images')
     twitter = models.CharField(max_length=200,blank=True,null=True)
     instagram = models.CharField(max_length=200,blank=True,null=True)
     tiktok = models.CharField(max_length=200,blank=True,null=True)
@@ -29,7 +29,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     short_intro = models.CharField(max_length=300)
     body = HTMLField()
-    thumbnail =models.ImageField(upload_to='images',default='yashc.jpg')
+    thumbnail =models.ImageField(upload_to='images',default='images/yashc.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     country = models.ManyToManyField(Country,blank=True)    
     is_featured = models.BooleanField(default=False)
@@ -58,7 +58,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=50) 
     email = models.EmailField()
     content = models.TextField()
-    user_img = models.ImageField(upload_to='images', default='default.jpg')
+    user_img = models.ImageField(upload_to='images', default='images/default.jpg')
     created_on = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,editable=False)
